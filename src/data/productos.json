@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "nombre": "Entraña",
+    "marca": "",
+    "modelo": "",
+    "precio": "21000",
+    "stock": "2",
+    "detalles": {
+      "descripcion": "Entraña de ternera",
+      "color": "",
+      "talla": ""
+    },
+    "imagenes_producto": "https://res.cloudinary.com/druvz15q9/image/upload/v1741363203/Entrana-de-ternera_aznptf.png"
+  }
+]
