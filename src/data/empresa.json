@@ -1,0 +1,29 @@
+[
+  {
+    "empresa": {
+      "id": "1",
+      "nombre": "Tabaqueria Tuc",
+      "descripcion": "Tabacos para liar en Tucumán",
+      "logo": "https://res.cloudinary.com/druvz15q9/image/upload/v1738808093/logoNegrowithoutBg_za2vpn.png",
+      "direccion": {
+        "calle": "Romano",
+        "numero": "710",
+        "ciudad": "Yerba Buena",
+        "provincia": "Tucumán",
+        "codigo_postal": "4107"
+      },
+      "contacto": {
+        "telefono": "3813994145",
+        "email": "jose@gmail.com"
+      },
+      "horarios": {
+        "lunes_viernes": "10:30",
+        "sabado": "11:30",
+        "domingo": "12:30"
+      },
+      "redes_sociales": {
+        "instagram": "joalvarezd"
+      }
+    }
+  }
+]
