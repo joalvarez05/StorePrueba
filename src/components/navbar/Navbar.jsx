@@ -198,17 +198,18 @@ const Navbar = () => {
                     className="flex items-center space-x-3 text-gray-600 hover:text-gray-900 transition-colors"
                   >
                     <FaMapMarkerAlt className="h-5 w-5" />
-                    <span className="text-sm">
+                    <span>
                       {calle}, {numero}, {ciudad}
                     </span>
                   </a>
 
                   <a
                     href={`tel:${telefono}`}
+                    target="_blank"
                     className="flex items-center space-x-3 text-gray-600 hover:text-gray-900 transition-colors"
                   >
                     <FaPhone className="h-5 w-5" />
-                    <span className="text-sm">{telefono}</span>
+                    <span>{telefono}</span>
                   </a>
 
                   <a
@@ -218,15 +219,17 @@ const Navbar = () => {
                     className="flex items-center space-x-3 text-green-600 hover:text-green-700 transition-colors"
                   >
                     <FaWhatsapp className="h-5 w-5" />
-                    <span className="text-sm">WhatsApp</span>
+                    <span>WhatsApp</span>
                   </a>
 
                   <a
                     href={`mailto:${email}`}
                     className="flex items-center space-x-3 text-gray-600 hover:text-gray-900 transition-colors"
+                    aria-label={`Enviar correo a ${email}`}
+                    target="_blank"
                   >
                     <FaEnvelope className="h-5 w-5" />
-                    <span className="text-sm">{email}</span>
+                    <span>{email}</span>
                   </a>
 
                   {instagram && (
@@ -237,7 +240,7 @@ const Navbar = () => {
                       className="flex items-center space-x-3 text-pink-600 hover:text-pink-700 transition-colors"
                     >
                       <FaInstagram className="h-5 w-5" />
-                      <span className="text-sm">Instagram</span>
+                      <span>Instagram</span>
                     </a>
                   )}
                 </div>
@@ -280,11 +283,14 @@ const Navbar = () => {
                   {calle}, {numero}, {ciudad}
                 </span>
               </a>
-
-              <div className="flex items-center space-x-3 text-gray-600">
+              <a
+                href={`tel:${telefono}`}
+                target="_blank"
+                className="flex items-center space-x-3 text-gray-600 hover:text-gray-900 transition-colors"
+              >
                 <FaPhone className="h-5 w-5" />
                 <span>{telefono}</span>
-              </div>
+              </a>
 
               <a
                 href={enlaceWhatsapp}
@@ -295,11 +301,27 @@ const Navbar = () => {
                 <FaWhatsapp className="h-5 w-5" />
                 <span>WhatsApp</span>
               </a>
-
-              <div className="flex items-center space-x-3 text-gray-600">
+              <a
+                href={`mailto:${email}`}
+                target="_blank"
+                className="flex items-center space-x-3 text-gray-600 hover:text-gray-900 transition-colors"
+                aria-label={`Enviar correo a ${email}`}
+              >
                 <FaEnvelope className="h-5 w-5" />
                 <span>{email}</span>
-              </div>
+              </a>
+
+              {instagram && (
+                <a
+                  href={`https://www.instagram.com/${instagram}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-3 text-pink-600 hover:text-pink-700 transition-colors"
+                >
+                  <FaInstagram className="h-5 w-5" />
+                  <span>Instagram</span>
+                </a>
+              )}
             </div>
             <button
               onClick={handleClose}
