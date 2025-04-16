@@ -1,4 +1,4 @@
-// hooks/useNavbarAnimations.js
+//al fin modularize este archivo del orrrt*** !
 import { useState } from "react";
 
 export function useNavbarAnimations() {

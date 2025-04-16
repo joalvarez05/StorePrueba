@@ -13,12 +13,13 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 import { useNavbarAnimations } from "@/hooks/useNavbarAnimations";
+import { deviceDetection } from "@/utils/deviceDetection";
 
 const Navbar = () => {
   const [infoEmpresa] = useState(empresa);
   const [isMobile, setIsMobile] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
+  const [enlace, setEnlace] = useState("");
   const {
     isOpen,
     isMobileAnimatingIn,
@@ -40,14 +41,10 @@ const Navbar = () => {
   } = infoEmpresa[0].empresa;
 
   useEffect(() => {
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    const mobileCheck = /android|iphone|ipad|ipod/i.test(userAgent);
-    setIsMobile(mobileCheck);
-  }, []);
-
-  const enlaceWhatsapp = isMobile
-    ? `https://wa.me/549${telefono}`
-    : `https://web.whatsapp.com/send?phone=549${telefono}`;
+    const { isMobile, enlaceWhatsapp } = deviceDetection(telefono);
+    setIsMobile(isMobile);
+    setEnlace(enlaceWhatsapp);
+  }, [telefono]);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -188,7 +185,7 @@ const Navbar = () => {
                   </a>
 
                   <a
-                    href={enlaceWhatsapp}
+                    href={enlace}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center space-x-3 text-green-600 hover:text-green-700 transition-colors"
@@ -268,7 +265,7 @@ const Navbar = () => {
               </a>
 
               <a
-                href={enlaceWhatsapp}
+                href={enlace}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-3 text-green-600 hover:text-green-700 transition-colors"
