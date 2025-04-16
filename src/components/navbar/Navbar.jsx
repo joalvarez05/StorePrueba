@@ -14,6 +14,7 @@ import {
 } from "react-icons/fa";
 import { useNavbarAnimations } from "@/hooks/useNavbarAnimations";
 import { deviceDetection } from "@/utils/deviceDetection";
+import { getEmpresaInfo } from "@/services/getEmpresaInfo";
 
 const Navbar = () => {
   const [infoEmpresa] = useState(empresa);
@@ -30,7 +31,7 @@ const Navbar = () => {
     handleOpen,
     handleClose,
   } = useNavbarAnimations();
-
+  getEmpresaInfo();
   const {
     nombre,
     logo,
@@ -42,6 +43,7 @@ const Navbar = () => {
   useEffect(() => {
     const { enlaceWhatsapp } = deviceDetection(telefono);
     setEnlace(enlaceWhatsapp);
+    // getEmpresaInfo();
   }, [telefono]);
 
   return (
