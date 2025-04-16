@@ -6,5 +6,5 @@ export function deviceDetection(telefono) {
     ? `https://wa.me/549${telefono}`
     : `https://web.whatsapp.com/send?phone=549${telefono}`;
 
-  return { isMobile, enlaceWhatsapp };
+  return { enlaceWhatsapp };
 }

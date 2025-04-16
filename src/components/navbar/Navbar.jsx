@@ -17,7 +17,6 @@ import { deviceDetection } from "@/utils/deviceDetection";
 
 const Navbar = () => {
   const [infoEmpresa] = useState(empresa);
-  const [isMobile, setIsMobile] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [enlace, setEnlace] = useState("");
   const {
@@ -41,8 +40,7 @@ const Navbar = () => {
   } = infoEmpresa[0].empresa;
 
   useEffect(() => {
-    const { isMobile, enlaceWhatsapp } = deviceDetection(telefono);
-    setIsMobile(isMobile);
+    const { enlaceWhatsapp } = deviceDetection(telefono);
     setEnlace(enlaceWhatsapp);
   }, [telefono]);
 
