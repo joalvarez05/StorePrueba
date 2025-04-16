@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaFilter, FaSearch } from "react-icons/fa";
 
 function Home() {
   return (

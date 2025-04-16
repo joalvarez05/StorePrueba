@@ -12,49 +12,24 @@ import {
   FaWhatsapp,
   FaInstagram,
 } from "react-icons/fa";
+import { useNavbarAnimations } from "@/hooks/useNavbarAnimations";
 
 const Navbar = () => {
   const [infoEmpresa] = useState(empresa);
-  const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [isAnimatingOut, setIsAnimatingOut] = useState(false);
-  const [isAnimatingIn, setIsAnimatingIn] = useState(false);
-  const [isMobileAnimatingIn, setIsMobileAnimatingIn] = useState(false);
-  const [isMobileAnimatingOut, setIsMobileAnimatingOut] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const toggleMobileMenu = () => {
-    if (!isOpen) {
-      setIsOpen(true);
-      setTimeout(() => {
-        setIsMobileAnimatingIn(true);
-      }, 10);
-    } else {
-      setIsMobileAnimatingIn(false);
-      setIsMobileAnimatingOut(true);
-      setTimeout(() => {
-        setIsOpen(false);
-        setIsMobileAnimatingOut(false);
-      }, 300);
-    }
-  };
-
-  const handleOpen = () => {
-    setShowModal(true);
-    setTimeout(() => {
-      setIsAnimatingIn(true);
-    }, 10);
-  };
-
-  const handleClose = () => {
-    setIsAnimatingIn(false);
-    setIsAnimatingOut(true);
-    setTimeout(() => {
-      setShowModal(false);
-      setIsAnimatingOut(false);
-    }, 300);
-  };
+  const {
+    isOpen,
+    isMobileAnimatingIn,
+    isMobileAnimatingOut,
+    toggleMobileMenu,
+    showModal,
+    isAnimatingIn,
+    isAnimatingOut,
+    handleOpen,
+    handleClose,
+  } = useNavbarAnimations();
 
   const {
     nombre,
