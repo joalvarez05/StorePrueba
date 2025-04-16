@@ -14,9 +14,13 @@ import {
 } from "react-icons/fa";
 import { useNavbarAnimations } from "@/hooks/useNavbarAnimations";
 import { deviceDetection } from "@/utils/deviceDetection";
-import { getEmpresaInfo } from "@/services/getEmpresaInfo";
+// import { getEmpresaInfo } from "@/services/getEmpresaInfo";
+const API_HOST = import.meta.env.VITE_API_HOST;
 
 const Navbar = () => {
+  // const empresa = useEmpresaStore((state) => state.empresa);
+  // if (!empresa) return null;
+  // const { nombre, descripcion, logo, direccion, contacto, redesSociales } = empresa;
   const [infoEmpresa] = useState(empresa);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [enlace, setEnlace] = useState("");
@@ -31,7 +35,7 @@ const Navbar = () => {
     handleOpen,
     handleClose,
   } = useNavbarAnimations();
-  getEmpresaInfo();
+
   const {
     nombre,
     logo,
@@ -44,6 +48,7 @@ const Navbar = () => {
     const { enlaceWhatsapp } = deviceDetection(telefono);
     setEnlace(enlaceWhatsapp);
     // getEmpresaInfo();
+    //Hay que hacer el store de zustand para alojar la info que viene de getEmpresaInfo().
   }, [telefono]);
 
   return (
@@ -53,8 +58,15 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex-shrink-0">
+              {/* {logo ? (
+                <img src={`${API_HOST}/${logo}`} alt={`${nombre} logo`} />
+              ) : (
+                <span className="font-semibold">{`${nombre}`}</span>
+              )} */}
               <img
                 src={logo}
+                // src={`${API_HOST}/${empresa.logo}`}
+
                 alt={`logo de ${nombre}`}
                 className="h-22 w-auto object-contain"
               />
