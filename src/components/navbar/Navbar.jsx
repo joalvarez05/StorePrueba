@@ -161,6 +161,16 @@ const Navbar = () => {
 
             {/* Mobile menu button */}
             <div className="md:hidden">
+              <div className="relative inline-block me-3">
+                <Link to="/pedido">
+                  <FaShoppingCart size={24} />
+                  {itemCount > 0 && (
+                    <span className="absolute top-[-13px] left-[12px] text-white bg-orange-600 rounded-full px-1 text-sm font-semibold">
+                      {itemCount}
+                    </span>
+                  )}
+                </Link>
+              </div>
               <button
                 onClick={toggleMobileMenu}
                 className="p-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors"
