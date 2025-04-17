@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import empresa from "@/data/empresa";
 import {
   FaBars,
@@ -11,7 +12,9 @@ import {
   FaInfoCircle,
   FaWhatsapp,
   FaInstagram,
+  FaShoppingCart,
 } from "react-icons/fa";
+
 import { useNavbarAnimations } from "@/hooks/useNavbarAnimations";
 import { deviceDetection } from "@/utils/deviceDetection";
 // import { getEmpresaInfo } from "@/services/getEmpresaInfo";
@@ -35,7 +38,7 @@ const Navbar = () => {
     handleOpen,
     handleClose,
   } = useNavbarAnimations();
-
+  const [itemCount, setItemCount] = useState(1); //esto deberia ser un store de zustand y solo leer su valor aca en el navbar . Deberia modificarse en el home cuando se agreguen los productos.
   const {
     nombre,
     logo,
@@ -83,7 +86,7 @@ const Navbar = () => {
                   type="text"
                   name="buscador"
                   aria-label="Campo de búsqueda"
-                  placeholder="Buscar por título..."
+                  placeholder="Buscar . . ."
                   className="pl-10 pr-4 py-2 w-64 border border-gray-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 />
               </div>
@@ -144,6 +147,16 @@ const Navbar = () => {
                   Acerca de {nombre}
                 </span>
               </button>
+              <div className="relative inline-block py-1">
+                <Link to="/pedido">
+                  <FaShoppingCart size={24} />
+                  {itemCount > 0 && (
+                    <span className="absolute top-[-13px] left-[12px] text-white bg-orange-600 rounded-full px-1 text-sm font-semibold">
+                      {itemCount}
+                    </span>
+                  )}
+                </Link>
+              </div>
             </div>
 
             {/* Mobile menu button */}
