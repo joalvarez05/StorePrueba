@@ -3,20 +3,16 @@ import { BsCart3 } from "react-icons/bs";
 import { motion } from "framer-motion";
 
 function ProductCard({ product, index }) {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
     <motion.div
       className="bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl w-full h-[200px] sm:h-[320px] md:w-[300px] md:h-[360px] flex flex-col"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      viewport={{ once: false, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.5 }}
       transition={{
         duration: 1,
         ease: "easeOut",
-        delay: index * 0.3, // Esto genera el "staggered" delay
+        delay: index * 0.1,
       }}
     >
       <div className="flex flex-row md:flex-col h-full">
