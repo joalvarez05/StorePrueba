@@ -6,6 +6,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Home from "@/pages/Home";
 import Carrito from "@/pages/Carrito";
 import Pedido from "@/pages/Pedido";
+import { Toaster } from "react-hot-toast";
 
 function AppRoutes() {
   const location = useLocation();
@@ -14,6 +15,7 @@ function AppRoutes() {
   }, [location.pathname]);
   return (
     <>
+      <Toaster />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

@@ -1,4 +1,5 @@
-import { useEmpresaStore } from ".";
+import { useEmpresaStore } from "./useEmpresaStore";
+import { useProductosStore } from "./useProductosStore";
 const API_HOST = import.meta.env.VITE_API_HOST;
 
 const MENSAJES_ERROR = {
@@ -34,9 +35,11 @@ export const getEmpresaInfo = async () => {
 
     const data = isJson ? await response.json() : null;
 
-    // Actualizar el store
     if (data) {
-      useEmpresaStore.getState().setEmpresaInfo(data);
+      const { productos, ...infoEmpresa } = data;
+
+      useEmpresaStore.getState().setEmpresaInfo(infoEmpresa);
+      useProductosStore.getState().setProductos(productos);
     }
 
     return data;
@@ -45,6 +48,6 @@ export const getEmpresaInfo = async () => {
       "Error al obtener la información de la empresa:",
       error.message
     );
-    throw error; 
+    throw error;
   }
 };

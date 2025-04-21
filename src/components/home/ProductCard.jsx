@@ -1,8 +1,11 @@
-import React, { useState } from "react";
 import { BsCart3 } from "react-icons/bs";
 import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 
 function ProductCard({ product, index }) {
+  const añadirAlCarrito = () => {
+    toast.success("Producto añadido correctamente");
+  };
   return (
     <motion.div
       className="bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl w-full h-[200px] sm:h-[320px] md:w-[300px] md:h-[360px] flex flex-col"
@@ -61,7 +64,7 @@ function ProductCard({ product, index }) {
 
           <button
             className="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md flex items-center justify-center transition-all duration-300 transform hover:scale-105 cursor-pointer"
-            onClick={() => alert("Producto añadido al carrito")}
+            onClick={añadirAlCarrito}
           >
             <BsCart3 className="h-5 w-5 mr-2" />
             Agregar

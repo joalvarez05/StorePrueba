@@ -14,14 +14,15 @@ import {
   FaInstagram,
   FaShoppingCart,
 } from "react-icons/fa";
-
+// import { getEmpresaInfo } from "@/lib/services/getEmpresaInfo";
+import { useEmpresaStore } from "@/lib/stores/useEmpresaStore";
 import { useNavbarAnimations } from "@/lib/hooks/useNavbarAnimations";
 import { deviceDetection } from "@/utils/deviceDetection";
-// import { getEmpresaInfo } from "@/lib/services/getEmpresaInfo";
-const API_HOST = import.meta.env.VITE_API_HOST;
 
+const API_HOST = import.meta.env.VITE_API_HOST;
 const Navbar = () => {
   // const empresa = useEmpresaStore((state) => state.empresa);
+
   // if (!empresa) return null;
   // const { nombre, descripcion, logo, direccion, contacto, redesSociales } = empresa;
   const [infoEmpresa] = useState(empresa);
