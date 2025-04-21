@@ -11,6 +11,118 @@
       "color": "",
       "talla": ""
     },
-    "imagenes_producto": "https://res.cloudinary.com/druvz15q9/image/upload/v1741363203/Entrana-de-ternera_aznptf.png"
+    "imagenes": "https://res.cloudinary.com/druvz15q9/image/upload/v1741363203/Entrana-de-ternera_aznptf.png"
+  },
+  {
+    "id": "2",
+    "nombre": "Tabaco",
+    "marca": "Pueblo",
+    "modelo": "",
+    "precio": "7600",
+    "stock": "2",
+    "detalles": {
+      "descripcion": "Tabaco Pueblo para armar",
+      "color": "",
+      "talla": ""
+    },
+    "imagenes": "https://acdn-us.mitiendanube.com/stores/001/363/876/products/5601333_001-11-ea4baf005d681cfaa316014235028691-640-0.jpg"
+  },
+  {
+    "id": "3",
+    "nombre": "Pata muslo",
+    "marca": "",
+    "modelo": "",
+    "precio": "7600",
+    "stock": "2",
+    "detalles": {
+      "descripcion": "Patamuslo de pollo",
+      "color": "",
+      "talla": ""
+    },
+    "imagenes": "https://calisa.com.ar/wp-content/uploads/2020/03/pata_muslo_fresco.png"
+  },
+  {
+    "id": "4",
+    "nombre": "Pechuga de pollo",
+    "marca": "",
+    "modelo": "",
+    "precio": "8000",
+    "stock": "2",
+    "detalles": {
+      "descripcion": "Pechuga de pollo por kg",
+      "color": "",
+      "talla": ""
+    },
+    "imagenes": "https://www.lavanguardia.com/files/og_thumbnail/uploads/2018/03/13/5e997e247257a.jpeg"
+  },
+  {
+    "id": "3",
+    "nombre": "Pata muslo",
+    "marca": "",
+    "modelo": "",
+    "precio": "7600",
+    "stock": "2",
+    "detalles": {
+      "descripcion": "Patamuslo de pollo",
+      "color": "",
+      "talla": ""
+    },
+    "imagenes": "https://calisa.com.ar/wp-content/uploads/2020/03/pata_muslo_fresco.png"
+  },
+  {
+    "id": "4",
+    "nombre": "Pechuga de pollo",
+    "marca": "",
+    "modelo": "",
+    "precio": "8000",
+    "stock": "2",
+    "detalles": {
+      "descripcion": "Pechuga de pollo por kg",
+      "color": "",
+      "talla": ""
+    },
+    "imagenes": ""
+  },
+  {
+    "id": "3",
+    "nombre": "Pata muslo",
+    "marca": "",
+    "modelo": "",
+    "precio": "7600",
+    "stock": "2",
+    "detalles": {
+      "descripcion": "Patamuslo de pollo",
+      "color": "",
+      "talla": ""
+    },
+    "imagenes": "https://calisa.com.ar/wp-content/uploads/2020/03/pata_muslo_fresco.png"
+  },
+  {
+    "id": "4",
+    "nombre": "Pechuga de pollo",
+    "marca": "",
+    "modelo": "",
+    "precio": "8000",
+    "stock": "2",
+    "detalles": {
+      "descripcion": "Pechuga de pollo por kg",
+      "color": "",
+      "talla": ""
+    },
+    "imagenes": "https://www.lavanguardia.com/files/og_thumbnail/uploads/2018/03/13/5e997e247257a.jpeg"
+  },
+  {
+    "id": "5",
+    "nombre": "Entraña",
+    "marca": "",
+    "modelo": "",
+    "precio": "21000",
+    "stock": "2",
+    "detalles": {
+      "descripcion": "Entraña de ternera",
+      "color": "",
+      "talla": ""
+    },
+    "imagenes": "https://res.cloudinary.com/druvz15q9/image/upload/v1741363203/Entrana-de-ternera_aznptf.png"
   }
 ]

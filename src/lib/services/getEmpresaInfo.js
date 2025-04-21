@@ -1,3 +1,4 @@
+import { useEmpresaStore } from ".";
 const API_HOST = import.meta.env.VITE_API_HOST;
 
 const MENSAJES_ERROR = {
@@ -9,6 +10,10 @@ const MENSAJES_ERROR = {
 
 export const getEmpresaInfo = async () => {
   try {
+    if (!API_HOST) {
+      throw new Error("API_HOST no está configurado");
+    }
+
     const response = await fetch(`${API_HOST}/api/empresa`, {
       method: "GET",
       headers: {
@@ -21,32 +26,25 @@ export const getEmpresaInfo = async () => {
       ?.includes("application/json");
 
     if (!response.ok) {
-      let mensajesDeError =
+      const mensajesDeError =
         MENSAJES_ERROR[response.status] ||
         `Error desconocido (${response.status})`;
-
-      if (isJson) {
-        try {
-          const errorBody = await response.json();
-          if (errorBody?.message) {
-            mensajesDeError += `: ${errorBody.message}`;
-          }
-        } catch {
-          // No se pudo leer el body como JSON
-        }
-      }
-
       throw new Error(mensajesDeError);
     }
 
-    return isJson ? await response.json() : null;
+    const data = isJson ? await response.json() : null;
+
+    // Actualizar el store
+    if (data) {
+      useEmpresaStore.getState().setEmpresaInfo(data);
+    }
+
+    return data;
   } catch (error) {
     console.error(
-      "Error al obtener la información de la empresa",
+      "Error al obtener la información de la empresa:",
       error.message
     );
-    return null;
+    throw error; 
   }
 };
-
-//Falta: pasar el json a un store de zustand cuando se reciba la info.
