@@ -18,14 +18,12 @@ function ProductCard({ product, index }) {
       <div className="flex flex-row md:flex-col h-full">
         {/* Imagen de la tarjeta */}
         <div className="w-1/3 md:w-full relative overflow-hidden">
-          {product.imagenes && (
-            <img
-              src={product.imagenes}
-              alt={product.nombre}
-              loading="lazy"
-              className="..."
-            />
-          )}
+          <img
+            src={product.imagenes}
+            alt={product.nombre}
+            loading="lazy"
+            className="h-full md:h-[180px] w-full object-contain transition-transform duration-700"
+          />
         </div>
 
         {/* Textos de la tarjeta */}
