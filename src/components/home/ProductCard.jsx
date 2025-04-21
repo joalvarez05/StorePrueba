@@ -26,9 +26,7 @@ function ProductCard({ product, index }) {
             src={product.imagenes}
             alt={product.nombre}
             loading="lazy"
-            className={`h-full md:h-[180px] w-full object-contain transition-transform duration-700 ${
-              isHovered ? "scale-110" : "scale-100"
-            }`}
+            className="h-full md:h-[180px] w-full object-contain transition-transform duration-700"
           />
         </div>
 
