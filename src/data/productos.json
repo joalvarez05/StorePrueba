@@ -1,17 +1,17 @@
 [
   {
     "id": "1",
-    "nombre": "Entraña",
-    "marca": "",
-    "modelo": "",
+    "nombre": "Tabaco ",
+    "marca": "Achalay",
+    "modelo": "Menta",
     "precio": "21000",
     "stock": "2",
     "detalles": {
-      "descripcion": "Entraña de ternera",
+      "descripcion": "Tabaco de menta",
       "color": "",
       "talla": ""
     },
-    "imagenes": "https://res.cloudinary.com/druvz15q9/image/upload/v1741363203/Entrana-de-ternera_aznptf.png"
+    "imagenes": "https://firebasestorage.stagebeta.kyte.site/v0/b/kyte-7c484.appspot.com/o/crCYACtsyagYLOK6b1ARzb0ALmF3%2Fthumb_280_0DD483C5-9DF5-43DD-9D15-BE79A626FD52.jpg?alt=media"
   },
   {
     "id": "2",
@@ -29,45 +29,45 @@
   },
   {
     "id": "3",
-    "nombre": "Pata muslo",
-    "marca": "",
-    "modelo": "",
+    "nombre": "Tabaco",
+    "marca": "Achalay",
+    "modelo": "Vainilla",
     "precio": "7600",
     "stock": "2",
     "detalles": {
-      "descripcion": "Patamuslo de pollo",
+      "descripcion": "Tabaco de Vainilla",
       "color": "",
       "talla": ""
     },
-    "imagenes": "https://calisa.com.ar/wp-content/uploads/2020/03/pata_muslo_fresco.png"
+    "imagenes": "https://firebasestorage.stagebeta.kyte.site/v0/b/kyte-7c484.appspot.com/o/crCYACtsyagYLOK6b1ARzb0ALmF3%2Fthumb_280_602904DB-69F6-4BC6-BCE6-9D3F752A24A2.jpg?alt=media"
   },
   {
     "id": "4",
-    "nombre": "Pechuga de pollo",
-    "marca": "",
-    "modelo": "",
+    "nombre": "Tabaco",
+    "marca": "Argento",
+    "modelo": "Café a la crema",
     "precio": "8000",
     "stock": "2",
     "detalles": {
-      "descripcion": "Pechuga de pollo por kg",
+      "descripcion": "Tabaco café a la crema",
       "color": "",
       "talla": ""
     },
-    "imagenes": "https://www.lavanguardia.com/files/og_thumbnail/uploads/2018/03/13/5e997e247257a.jpeg"
+    "imagenes": "https://firebasestorage.stagebeta.kyte.site/v0/b/kyte-7c484.appspot.com/o/JyRdwCwgDlXcKN6ud9eaxLNpmTP2%2Fthumb_280_0C84DB98-D9DD-4F1F-8A8C-4455ACF140A3.jpg?alt=media"
   },
   {
     "id": "5",
-    "nombre": "Pata muslo",
-    "marca": "",
-    "modelo": "",
+    "nombre": "Tabaco",
+    "marca": "Cerrito",
+    "modelo": "Natural",
     "precio": "7600",
     "stock": "2",
     "detalles": {
-      "descripcion": "Patamuslo de pollo",
+      "descripcion": "Tabaco natural",
       "color": "",
       "talla": ""
     },
-    "imagenes": "https://calisa.com.ar/wp-content/uploads/2020/03/pata_muslo_fresco.png"
+    "imagenes": "https://firebasestorage.stagebeta.kyte.site/v0/b/kyte-7c484.appspot.com/o/JyRdwCwgDlXcKN6ud9eaxLNpmTP2%2Fthumb_280_F8D2126C-CC86-4683-8BE8-C9A15F3C7A70.jpg?alt=media"
   },
   {
     "id": "6",

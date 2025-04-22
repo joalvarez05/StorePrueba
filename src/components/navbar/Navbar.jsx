@@ -98,7 +98,7 @@ const Navbar = () => {
                   // src={`${API_HOST}/${empresa.logo}`}
 
                   alt={`logo de ${nombre}`}
-                  className="h-22 w-auto object-contain"
+                  className="h-18 w-auto object-contain"
                 />
               </Link>
             </div>
@@ -130,7 +130,7 @@ const Navbar = () => {
                       className="h-4 w-4 text-gray-500"
                       aria-hidden="true"
                     />
-                    <span className="text-sm text-gray-700">{ordenar}</span>
+                    <span className="text-md text-gray-700">{ordenar}</span>
                   </button>
                 </div>
                 {/* Menú desplegable */}
@@ -139,10 +139,10 @@ const Navbar = () => {
                     dropdownOpen ? "block" : "hidden"
                   }`}
                 >
-                  <ul className="py-1 text-sm text-gray-700">
+                  <ul className="py-1 text-md text-gray-700 ">
                     {["Relevancia", "Mayor precio", "Menor precio"].map(
                       (opcion) => (
-                        <li key={opcion}>
+                        <li key={opcion} className="text-center py-2">
                           <button
                             className="dropdown-item"
                             onClick={() => setOrdenar(opcion)}
@@ -173,12 +173,10 @@ const Navbar = () => {
 
               <button
                 onClick={handleOpen}
-                className="flex items-center space-x-2 px-6 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors"
+                className="flex items-center space-x-2 px-6 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors cursor-pointer"
               >
-                <FaInfoCircle className="h-4 w-4" />
-                <span className="text-sm font-medium cursor-pointer">
-                  Acerca de {nombre}
-                </span>
+                <FaInfoCircle className="h-5 w-5" />
+                <span className="text-md font-medium ">{nombre}</span>
               </button>
               <div className="relative inline-block py-1">
                 <Link to="/carrito">
@@ -307,7 +305,7 @@ const Navbar = () => {
               <FaTimes className="h-5 w-5 text-gray-500" />
             </button>
             <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-              Acerca de {nombre}
+              {nombre}
             </h2>
             <div className="space-y-4">
               <a

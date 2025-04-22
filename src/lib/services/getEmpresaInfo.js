@@ -1,5 +1,5 @@
-import { useEmpresaStore } from "./useEmpresaStore";
-import { useProductosStore } from "./useProductosStore";
+import { useEmpresaStore } from "../stores/useEmpresaStore";
+import { useProductosStore } from "../stores/useProductosStore";
 const API_HOST = import.meta.env.VITE_API_HOST;
 
 const MENSAJES_ERROR = {
