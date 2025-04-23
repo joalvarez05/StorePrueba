@@ -3,27 +3,31 @@ import { Link } from "react-router-dom";
 import empresa from "@/data/empresa.json";
 import { FaSearch, FaFilter } from "react-icons/fa";
 import ProductCard from "@/components/home/ProductCard";
+import useMetaTags from "@/lib/hooks/useMetaTags";
 
 function Home() {
   const [filtro, setFiltro] = useState("destacado");
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [data, setData] = useState("");
+  // const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const dataList = empresa.map((item) => item.empresa);
     setData(dataList);
   }, []);
+  useMetaTags(data);
 
   return (
     <>
       {/* banner empresa */}
       <div className="w-full flex justify-center">
-        <div className=" max-h-3/6 h-auto pt-1">
-          <img
-            src={data && data.length > 0 ? data[0].banner : "Cargando..."}
-            alt="Banner"
-            className="w-full h-[125px] sm:h-[180px] md:h-[200px] object-cover rounded-xl"
-          />
+        <div className="max-h-3/6 h-auto pt-1">
+          {data && data.length > 0 && data[0].banner ? (
+            <img
+              src={data[0].banner}
+              alt="Banner"
+              className="w-full h-[125px] sm:h-[180px] md:h-[200px] object-cover rounded-xl"
+            />
+          ) : null}
         </div>
       </div>
 
@@ -84,6 +88,7 @@ function Home() {
           </ul>
         </div> */}
       </div>
+
       <section className="pt-6 pb-8 ">
         <div className="container mx-auto px-4">
           <div className="flex justify-center items-center mb-8">
@@ -94,6 +99,7 @@ function Home() {
           <ProductCard filter={filtro} />
         </div>
       </section>
+
       <div>
         <Link to="/carrito" className="font-semibold cursor-pointer border-2">
           {" "}
