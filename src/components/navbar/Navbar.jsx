@@ -15,7 +15,8 @@ import {
   FaShoppingCart,
 } from "react-icons/fa";
 // import { getEmpresaInfo } from "@/lib/services/getEmpresaInfo";
-import { useEmpresaStore } from "@/lib/stores/useEmpresaStore";
+// import { useEmpresaStore } from "@/lib/stores/useEmpresaStore";
+import useCarritoStore from "@/lib/stores/useCarritoStore";
 import { useNavbarAnimations } from "@/lib/hooks/useNavbarAnimations";
 import { deviceDetection } from "@/utils/deviceDetection";
 
@@ -29,8 +30,16 @@ const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [enlace, setEnlace] = useState("");
   const [ordenar, setOrdenar] = useState("Filtrar");
-  const [itemCount, setItemCount] = useState(1);
-  //itemCount deberia ser un store de zustand y solo leer su valor aca en el navbar . Deberia modificarse en el home cuando se agreguen los productos.
+  const [itemCount, setItemCount] = useState(0);
+  const cart = useCarritoStore((state) => state.cart);
+
+  useEffect(() => {
+    const totalProductos = cart.reduce(
+      (total, item) => total + item.cantidad,
+      0
+    );
+    setItemCount(totalProductos);
+  }, [cart]);
 
   const {
     isOpen,

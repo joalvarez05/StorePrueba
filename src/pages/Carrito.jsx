@@ -18,6 +18,9 @@ function Carrito() {
         <div className="w-full md:w-7/12 lg:w-8/12 mt-1">
           <CarritoProductos />
         </div>
+        <div>
+          <h2>hola</h2>
+        </div>
         <div className="w-full md:w-5/12 lg:w-4/12 mt-20 flex justify-end ">
           <CarritoCantidad />
         </div>
