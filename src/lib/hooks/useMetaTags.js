@@ -1,16 +1,14 @@
-// src/hooks/useMetaTags.js
-
 import { useEffect } from "react";
 
 const useMetaTags = (data) => {
   useEffect(() => {
     if (data && data.length > 0) {
-      const empresa = data[0]; // Suponemos que el primer objeto de data es el que contiene la información relevante
+      const empresa = data[0];
 
-      // Actualizar título
+      //  título
       document.title = empresa.nombre || "UHMO · Store";
 
-      // Actualizar meta tags generales
+      //  meta tags generales
       let descriptionTag = document.querySelector("meta[name='description']");
       if (!descriptionTag) {
         descriptionTag = document.createElement("meta");
@@ -54,7 +52,7 @@ const useMetaTags = (data) => {
         empresa.logo || "https://uhmo.store/favicon.ico"
       );
 
-      // Actualizar Open Graph
+      //  Open Graph
       let ogTitleTag = document.querySelector("meta[property='og:title']");
       if (!ogTitleTag) {
         ogTitleTag = document.createElement("meta");
@@ -105,7 +103,7 @@ const useMetaTags = (data) => {
       }
       ogLocaleTag.setAttribute("content", empresa.locale || "es_AR");
 
-      // Actualizar Twitter meta tags
+      //  Twitter meta tags
       let twitterTitleTag = document.querySelector(
         "meta[name='twitter:title']"
       );

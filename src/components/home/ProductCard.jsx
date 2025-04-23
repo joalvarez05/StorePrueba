@@ -1,8 +1,9 @@
+// import { useEffect } from "react";
 import { BsCart3 } from "react-icons/bs";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import productos from "@/data/productos";
-import { useEffect } from "react";
+import useCarritoStore from "@/lib/stores/useCarritoStore";
 // import { getEmpresaInfo } from "@/lib/services/getEmpresaInfo";
 // import useProductosStore from "@/lib/stores/useProductosStore";
 
@@ -12,8 +13,10 @@ function ProductCard({ filter }) {
   // useEffect(() => {
   //   getEmpresaInfo();
   // }, []);
+  const agregarAlCarrito = useCarritoStore((state) => state.agregarAlCarrito); // Usar la función del store
 
-  const añadirAlCarrito = () => {
+  const handleAgregarAlCarrito = (product) => {
+    agregarAlCarrito(product);
     toast.success("Producto añadido correctamente");
   };
 
@@ -64,7 +67,7 @@ function ProductCard({ filter }) {
 
               <button
                 className="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md flex items-center justify-center transition-all duration-300 transform hover:scale-105 cursor-pointer"
-                onClick={añadirAlCarrito}
+                onClick={() => handleAgregarAlCarrito(product)}
               >
                 <BsCart3 className="h-5 w-5 mr-2" />
                 Agregar
