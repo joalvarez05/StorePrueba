@@ -18,7 +18,7 @@ const CarritoCantidad = ({ handleRedirection }) => {
           <h3 className="text-lg font-oswald mb-3">Resumen de tu pedido:</h3>
           {cart.length > 0 && (
             <div className="flex justify-between items-center text-sm font-semibold pb-4">
-              <span>Total estimado: </span>{" "}
+              <span>Total: </span>{" "}
               <span className="text-green-700 font-bold">{totalEnPesos}</span>
             </div>
           )}

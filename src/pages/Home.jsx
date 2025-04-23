@@ -19,7 +19,7 @@ function Home() {
   return (
     <>
       {/* banner empresa */}
-      <div className="w-full flex justify-center pt-20">
+      <div className="w-full flex justify-center">
         <div className="max-h-3/6 h-auto pt-1">
           {data && data.length > 0 && data[0].banner ? (
             <img
@@ -99,18 +99,6 @@ function Home() {
           <ProductCard filter={filtro} />
         </div>
       </section>
-
-      <div>
-        <Link to="/carrito" className="font-semibold cursor-pointer border-2">
-          {" "}
-          Haceme click y vamos al carrito pa
-        </Link>
-        <br />
-        <Link to="/pedido" className="font-semibold cursor-pointer border-2">
-          {" "}
-          Haceme click y vamos al pedido viejo lobo
-        </Link>
-      </div>
     </>
   );
 }
