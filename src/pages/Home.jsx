@@ -19,7 +19,7 @@ function Home() {
   return (
     <>
       {/* banner empresa */}
-      <div className="w-full flex justify-center">
+      <div className="w-full flex justify-center pt-20">
         <div className="max-h-3/6 h-auto pt-1">
           {data && data.length > 0 && data[0].banner ? (
             <img
