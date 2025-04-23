@@ -47,6 +47,7 @@ const useMetaTags = (data) => {
         icon.setAttribute("rel", "icon");
         document.head.appendChild(icon);
       }
+      
       icon.setAttribute(
         "href",
         empresa.logo || "https://uhmo.store/favicon.ico"
@@ -113,6 +114,14 @@ const useMetaTags = (data) => {
         document.head.appendChild(twitterTitleTag);
       }
       twitterTitleTag.setAttribute("content", empresa.nombre || "UHMO · Store");
+
+      let twitterSiteTag = document.querySelector("meta[name='twitter:site']");
+      if (!twitterSiteTag) {
+        twitterSiteTag = document.createElement("meta");
+        twitterSiteTag.setAttribute("name", "twitter:site");
+        document.head.appendChild(twitterSiteTag);
+      }
+      twitterSiteTag.setAttribute("content", empresa.nombre || "UHMO · Store");
 
       let twitterDescriptionTag = document.querySelector(
         "meta[name='twitter:description']"

@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import useCarritoStore from "@/lib/stores/useCarritoStore";
 import { formatCurrency } from "@/utils/formatCurrency";
+
 function CarritoProductos() {
   const cart = useCarritoStore((state) => state.cart);
 
