@@ -6,7 +6,7 @@ const useMetaTags = (data) => {
       const empresa = data[0];
 
       //  título
-      document.title = empresa.nombre || "UHMO · Store";
+      document.title = empresa.nombre || "nada";
 
       //  meta tags generales
       let descriptionTag = document.querySelector("meta[name='description']");
@@ -47,7 +47,7 @@ const useMetaTags = (data) => {
         icon.setAttribute("rel", "icon");
         document.head.appendChild(icon);
       }
-      
+
       icon.setAttribute(
         "href",
         empresa.logo || "https://uhmo.store/favicon.ico"
