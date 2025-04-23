@@ -25,7 +25,7 @@ function Home() {
             <img
               src={data[0].banner}
               alt="Banner"
-              className="w-full h-[125px] sm:h-[180px] md:h-[200px] object-cover rounded-xl"
+              className="w-full sm:h-[180px] md:h-[200px] object-cover sm:rounded-xl "
             />
           ) : null}
         </div>

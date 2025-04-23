@@ -29,17 +29,17 @@
   },
   {
     "id": "3",
-    "nombre": "Tabaco",
-    "marca": "Achalay",
-    "modelo": "Vainilla",
-    "precio": "7600",
+    "nombre": "Zapatillas",
+    "marca": "Nike",
+    "modelo": "Air Max 97",
+    "precio": "349000",
     "stock": "2",
     "detalles": {
-      "descripcion": "Tabaco de Vainilla",
-      "color": "",
-      "talla": ""
+      "descripcion": "Zapatillas de hombre",
+      "color": "Beige",
+      "talla": "44"
     },
-    "imagenes": "https://firebasestorage.stagebeta.kyte.site/v0/b/kyte-7c484.appspot.com/o/crCYACtsyagYLOK6b1ARzb0ALmF3%2Fthumb_280_602904DB-69F6-4BC6-BCE6-9D3F752A24A2.jpg?alt=media"
+    "imagenes": "https://woker.vtexassets.com/arquivos/ids/492182-800-800?v=638603733648200000&width=800&height=800&aspect=true"
   },
   {
     "id": "4",

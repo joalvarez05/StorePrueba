@@ -1,9 +1,9 @@
 // import { useEffect } from "react";
 import { BsCart3 } from "react-icons/bs";
 import { motion } from "framer-motion";
-import toast from "react-hot-toast";
 import productos from "@/data/productos";
 import useCarritoStore from "@/lib/stores/useCarritoStore";
+import { formatCurrency } from "@/utils/formatCurrency";
 // import { getEmpresaInfo } from "@/lib/services/getEmpresaInfo";
 // import useProductosStore from "@/lib/stores/useProductosStore";
 
@@ -17,7 +17,6 @@ function ProductCard({ filter }) {
 
   const handleAgregarAlCarrito = (product) => {
     agregarAlCarrito(product);
-    toast.success("Producto añadido correctamente");
   };
 
   return (
@@ -58,8 +57,8 @@ function ProductCard({ filter }) {
 
                 <div className="flex items-center justify-between ">
                   <div>
-                    <span className="text-xl font-bold text-gray-900 ">
-                      ${product.precio}
+                    <span className="text-xl font-bold text-indigo-600 ">
+                      {formatCurrency(product.precio)}
                     </span>
                   </div>
                 </div>
