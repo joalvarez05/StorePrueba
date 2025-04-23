@@ -8,20 +8,17 @@ function Carrito() {
   const cantidadArticulos = cart.length;
 
   return (
-    <div>
-      <div className="flex flex-col ">
+    <div className="px-1 sm:px-1 md:px-8 lg:px-18">
+      <div className="flex flex-col container mx-auto">
         <div className=" py-4">
           <h2 className="text-2xl font-extrabold tracking-wider bg-clip-text py-1 ms-5">
             Mi Carrito ({cantidadArticulos} artículos)
           </h2>
         </div>
-        <div className="w-full md:w-7/12 lg:w-8/12 mt-1">
+        <div className="w-full md:w-12/12 mt-1">
           <CarritoProductos />
         </div>
-        <div>
-          <h2>hola</h2>
-        </div>
-        <div className="w-full md:w-5/12 lg:w-4/12 mt-20 flex justify-end ">
+        <div className="w-full md:w-12/12 container lg:w-12/12 mt-10 md:mt-0">
           <CarritoCantidad />
         </div>
       </div>
