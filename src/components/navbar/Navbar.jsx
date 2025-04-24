@@ -19,7 +19,7 @@ import {
 import useCarritoStore from "@/lib/stores/useCarritoStore";
 import { useNavbarAnimations } from "@/lib/hooks/useNavbarAnimations";
 import { deviceDetection } from "@/utils/deviceDetection";
-
+import SearchBar from "./SearchBar";
 const API_HOST = import.meta.env.VITE_API_HOST;
 const Navbar = () => {
   // const empresa = useEmpresaStore((state) => state.empresa);
@@ -27,9 +27,7 @@ const Navbar = () => {
   // if (!empresa) return null;
   // const { nombre, descripcion, logo, direccion, contacto, redesSociales } = empresa;
   const [infoEmpresa] = useState(empresa);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [enlace, setEnlace] = useState("");
-  const [ordenar, setOrdenar] = useState("Filtrar");
   const [itemCount, setItemCount] = useState(0);
   const cart = useCarritoStore((state) => state.cart);
 
@@ -115,72 +113,7 @@ const Navbar = () => {
 
               {/* Desktop Navigation */}
               <div className="hidden md:flex items-center space-x-6">
-                <div className="relative">
-                  <FaSearch
-                    className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4"
-                    aria-hidden="true"
-                  />
-                  <input
-                    type="search"
-                    name="buscador"
-                    aria-label="Campo de búsqueda"
-                    placeholder="Buscar . . ."
-                    className="pl-10 pr-4 py-2 w-64 border border-gray-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                  />
-                </div>
-
-                <div className="relative inline-block text-left">
-                  <div>
-                    <button
-                      type="button"
-                      className="flex items-center cursor-pointer space-x-2 px-4 py-2 rounded-full border border-gray-200 hover:bg-gray-50 transition-colors"
-                      onClick={() => setDropdownOpen(!dropdownOpen)}
-                    >
-                      <FaFilter
-                        className="h-4 w-4 text-gray-500"
-                        aria-hidden="true"
-                      />
-                      <span className="text-md text-gray-700">{ordenar}</span>
-                    </button>
-                  </div>
-                  {/* Menú desplegable */}
-                  <div
-                    className={`absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg ${
-                      dropdownOpen ? "block" : "hidden"
-                    }`}
-                  >
-                    <ul className="py-1 text-md text-gray-700 ">
-                      {["Relevancia", "Mayor precio", "Menor precio"].map(
-                        (opcion) => (
-                          <li key={opcion} className="text-center py-2">
-                            <button
-                              className="dropdown-item"
-                              onClick={() => setOrdenar(opcion)}
-                            >
-                              {opcion}
-                            </button>
-                          </li>
-                        )
-                      )}
-                      {/* <li>
-                      <button className="w-full cursor-pointer block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                        Destacado
-                      </button>
-                    </li>
-                    <li>
-                      <button className="block px-4 py-2 w-full cursor-pointer text-gray-700 hover:bg-gray-100">
-                        Precio: mayor a menor
-                      </button>
-                    </li>
-                    <li>
-                      <button className="block px-4 py-2 w-full cursor-pointer text-gray-700 hover:bg-gray-100">
-                        Precio: menor a mayor
-                      </button>
-                    </li> */}
-                    </ul>
-                  </div>
-                </div>
-
+                <SearchBar />
                 <button
                   onClick={handleOpen}
                   className="flex items-center space-x-2 px-6 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors cursor-pointer"
