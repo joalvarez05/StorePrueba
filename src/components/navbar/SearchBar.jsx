@@ -13,8 +13,8 @@ function SearchBar() {
   );
 
   const manejarOrden = (opcion) => {
-    setOrdenar(opcion); // Esto actualiza el estado
-    setDropdownOpen(false); // Cierra el dropdown
+    setOrdenar(opcion);
+    setDropdownOpen(false);
   };
 
   useEffect(() => {
@@ -30,7 +30,6 @@ function SearchBar() {
         );
       }
 
-      // Clonamos antes de ordenar para evitar mutar el array original
       if (ordenar === "Mayor precio") {
         filtrados = [...filtrados].sort((a, b) => b.precio - a.precio);
       } else if (ordenar === "Menor precio") {

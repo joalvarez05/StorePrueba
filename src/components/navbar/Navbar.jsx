@@ -118,8 +118,8 @@ const Navbar = () => {
                   onClick={handleOpen}
                   className="flex items-center space-x-2 px-6 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors cursor-pointer"
                 >
-                  <FaInfoCircle className="h-5 w-5" />
-                  <span className="text-md font-medium ">{nombre}</span>
+                  <FaInfoCircle className="h-4 w-4" />
+                  <span className="text-sm font-semibold ">{nombre}</span>
                 </button>
                 <div className="relative inline-block py-1">
                   <Link to="/carrito">
