@@ -1,15 +1,11 @@
 import { Link } from "react-router-dom";
-import useCarritoStore from "@/lib/stores/useCarritoStore";
-import { formatCurrency } from "@/utils/formatCurrency";
 import { FaQuestionCircle, FaShieldAlt } from "react-icons/fa";
+import { calcularPrecioTotal } from "@/utils/calculateTotalPrice";
+import useCarritoStore from "@/lib/stores/useCarritoStore";
 
 const CarritoCantidad = ({ handleRedirection }) => {
   const cart = useCarritoStore((state) => state.cart);
-  const total = cart.reduce(
-    (sum, item) => sum + Number(item.precio) * item.cantidad,
-    0
-  );
-  const totalEnPesos = formatCurrency(total);
+  const total = calcularPrecioTotal(cart);
 
   const renderHelpDetails = () => (
     <div className="mt-8 space-y-4 text-sm text-gray-700">
@@ -44,28 +40,20 @@ const CarritoCantidad = ({ handleRedirection }) => {
       {cart.length > 0 && (
         <div className="flex justify-between items-center text-base font-semibold border-b border-gray-200 pb-4 mb-4">
           <span>Total:</span>
-          <span className="text-green-700">{totalEnPesos}</span>
+          <span className="text-green-700">{total}</span>
         </div>
       )}
 
       <Link to="/pedido" onClick={handleRedirection}>
         <button
           type="button"
-          className="bg-green-600 hover:bg-green-700 text-white font-bold w-full py-3 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+          className="bg-green-600 cursor-pointer hover:bg-green-700 text-white font-bold w-full py-3 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
           disabled={cart.length === 0}
         >
           Confirmar pedido
         </button>
       </Link>
-
       {renderHelpDetails()}
-
-      {cart.length > 0 && (
-        <p className="mt-6 text-xs text-gray-500 text-center">
-          {cart.length} {cart.length === 1 ? "producto" : "productos"} en tu
-          carrito.
-        </p>
-      )}
     </div>
   );
 
@@ -79,7 +67,7 @@ const CarritoCantidad = ({ handleRedirection }) => {
           {cart.length > 0 ? (
             <div className="text-lg font-semibold text-gray-700 flex justify-between">
               <p className="mb-1 font-bold">Total</p>
-              <p className="text-green-700 text-2xl">{totalEnPesos}</p>
+              <p className="text-green-700 text-2xl">{total}</p>
             </div>
           ) : (
             <p className="text-gray-500 py-2">Tu carrito está vacío.</p>
@@ -90,7 +78,7 @@ const CarritoCantidad = ({ handleRedirection }) => {
         <Link to="/pedido" onClick={handleRedirection}>
           <button
             type="button"
-            className="bg-green-600  hover:bg-green-700 text-white font-bold py-3 w-full rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-green-600 hover:bg-green-700 cursor-pointer text-white font-bold py-3 w-full rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={cart.length === 0}
           >
             Confirmar pedido

@@ -122,28 +122,48 @@ const Navbar = () => {
                   <span className="text-sm font-semibold ">{nombre}</span>
                 </button>
                 <div className="relative inline-block py-1">
-                  <Link to="/carrito">
-                    <FaShoppingCart size={24} />
-                    {itemCount > 0 && (
+                  {itemCount > 0 ? (
+                    <Link
+                      to="/carrito"
+                      className="flex items-center"
+                      title="Carrito"
+                    >
+                      <FaShoppingCart size={24} />
                       <span className="absolute top-[-13px] left-[12px] text-white bg-orange-600 rounded-full px-1 text-sm font-semibold">
                         {itemCount}
                       </span>
-                    )}
-                  </Link>
+                    </Link>
+                  ) : (
+                    <div
+                      className="flex items-center cursor-not-allowed opacity-50"
+                      title="Agrega un producto"
+                    >
+                      <FaShoppingCart size={24} />
+                    </div>
+                  )}
                 </div>
               </div>
 
               {/* Mobile menu button */}
               <div className="md:hidden">
                 <div className="relative inline-block me-3">
-                  <Link to="/carrito">
-                    <FaShoppingCart size={24} />
-                    {itemCount > 0 && (
-                      <span className="absolute top-[-13px] left-[12px] text-white bg-orange-600 rounded-full px-1 text-sm font-semibold">
-                        {itemCount}
-                      </span>
-                    )}
-                  </Link>
+                  {itemCount > 0 ? (
+                    <Link to="/carrito" title="Carrito">
+                      <FaShoppingCart size={24} />
+                      {itemCount > 0 && (
+                        <span className="absolute top-[-13px] left-[12px] text-white bg-orange-600 rounded-full px-1 text-sm font-semibold">
+                          {itemCount}
+                        </span>
+                      )}
+                    </Link>
+                  ) : (
+                    <div
+                      className="flex items-center cursor-not-allowed opacity-50"
+                      title="Agrega un producto"
+                    >
+                      <FaShoppingCart size={24} />
+                    </div>
+                  )}
                 </div>
                 <button
                   onClick={toggleMobileMenu}

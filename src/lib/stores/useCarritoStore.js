@@ -101,6 +101,11 @@ const useCarritoStore = create((set, get) => ({
     set({ cart: nuevoCarrito });
     toast.success("Producto eliminado del carrito");
   },
+  eliminarCarrito: () => {
+    sessionStorage.removeItem("cart");
+    set({ cart: [] });
+    toast.success("Pedido realizado correctamente");
+  },
 }));
 
 export default useCarritoStore;

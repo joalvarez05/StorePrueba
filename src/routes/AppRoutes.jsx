@@ -19,7 +19,6 @@ function AppRoutes() {
       <Toaster />
       <Navbar />
 
-      {/* El main se expande para empujar el footer abajo */}
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
