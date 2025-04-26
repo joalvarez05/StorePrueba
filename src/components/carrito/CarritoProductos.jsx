@@ -12,6 +12,7 @@ function CarritoProductos() {
   );
   const disminuirCantidad = useCarritoStore((state) => state.disminuirCantidad);
 
+
   return (
     <>
       {/* 🌐 Tabla para tablets y desktop */}

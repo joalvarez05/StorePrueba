@@ -67,7 +67,7 @@ function SearchBar() {
           <button
             type="button"
             onClick={() => setDropdownOpen((prev) => !prev)}
-            className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors cursor-pointer"
           >
             <FaFilter className="h-4 w-4 text-gray-500" />
             <span className="text-sm text-gray-700">{ordenar}</span>

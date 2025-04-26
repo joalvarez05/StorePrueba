@@ -203,7 +203,6 @@ const Navbar = () => {
                         {calle}, {numero}, {ciudad}
                       </span>
                     </a>
-
                     <a
                       href={`tel:${telefono}`}
                       target="_blank"
@@ -212,7 +211,6 @@ const Navbar = () => {
                       <FaPhone className="h-5 w-5" />
                       <span>{telefono}</span>
                     </a>
-
                     <a
                       href={enlace}
                       target="_blank"
@@ -264,7 +262,7 @@ const Navbar = () => {
           >
             <button
               onClick={handleClose}
-              className="absolute top-6 right-4 p-1 rounded-full hover:bg-gray-100 transition-colors"
+              className="absolute top-6 right-4 p-1 rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
             >
               <FaTimes className="h-5 w-5 text-gray-500" />
             </button>
@@ -273,12 +271,10 @@ const Navbar = () => {
             </h2>
             <div className="space-y-4">
               <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                  `${calle} ${numero}, ${ciudad}`
-                )}`}
+                href={`https://www.google.com/maps/search/?api=1&query=${`${calle} ${numero}, ${ciudad}`}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-3 text-gray-600 hover:text-gray-900 transition-colors"
+                className="flex items-center space-x-3 text-gray-600 hover:text-gray-900 transition-colors cursor-pointer"
               >
                 <FaMapMarkerAlt className="h-5 w-5" />
                 <span>
@@ -298,7 +294,7 @@ const Navbar = () => {
                 href={enlace}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-3 text-green-600 hover:text-green-700 transition-colors"
+                className="flex items-center space-x-3 text-green-600 hover:text-green-700 transition-colors cursor-pointer"
               >
                 <FaWhatsapp className="h-5 w-5" />
                 <span>WhatsApp</span>

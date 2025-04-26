@@ -9,7 +9,6 @@ function Footer() {
       </footer>
     );
   }
-
   return (
     <footer className="bg-gray-100 pt-4 text-center text-sm text-gray-700">
       <div className="px-4 max-w-4xl mx-auto">

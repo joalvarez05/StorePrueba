@@ -36,7 +36,7 @@ function ProductCard() {
           }}
         >
           {/* Imagen */}
-          <div className="w-1/3 md:w-full md:h-3/5 relative overflow-hidden flex items-center justify-center bg-gray-50">
+          <div className="w-1/3 md:w-full md:h-3/5 relative overflow-hidden flex items-center justify-center">
             <img
               src={product.imagenes}
               alt={product.nombre}

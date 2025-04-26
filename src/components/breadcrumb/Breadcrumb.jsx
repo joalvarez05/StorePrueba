@@ -4,7 +4,7 @@ function Breadcrumb() {
   const location = useLocation();
   const navigate = useNavigate();
   const path = location.pathname;
-
+  
   const breadcrumbMap = {
     "/carrito": "Mi carrito",
     "/pedido": "Pedido",

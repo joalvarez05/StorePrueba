@@ -12,7 +12,8 @@
         "numero": "710",
         "ciudad": "Yerba Buena",
         "provincia": "Tucumán",
-        "codigo_postal": "4107"
+        "codigo_postal": "4107",
+        "mapa": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.4477813953154!2d-65.27408242451067!3d-26.825706576699183!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94225cc5078f6ed9%3A0x19a8d316b4a3d33a!2sRomano%20710%2C%20T4107FOM%20Yerba%20Buena%2C%20Tucum%C3%A1n!5e0!3m2!1ses!2sar!4v1745671154313!5m2!1ses!2sar"
       },
       "contacto": {
         "telefono": "3813994145",
