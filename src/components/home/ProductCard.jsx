@@ -10,7 +10,6 @@ function ProductCard() {
   const handleAgregarAlCarrito = (product) => {
     agregarAlCarrito(product);
   };
-
   const productosFiltrados = useProductosFiltrados(
     (state) => state.productosFiltrados
   );

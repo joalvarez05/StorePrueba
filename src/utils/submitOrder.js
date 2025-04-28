@@ -7,22 +7,18 @@ export const handleSubmitPedido = async (
   totalPrecio,
   reset,
   navigate,
-  eliminarCarrito,
-  dispatch
+  eliminarCarrito
 ) => {
   if (!cart.length || totalPrecio <= 0) {
+    //aca colocamos un toast
     alert("Tu carrito está vacío o el total es inválido.");
     return;
   }
-  console.log("submitOrder function :", formData);
-  dispatch({ type: "TOGGLE_SUBMITTING" });
 
   try {
     const mensaje = generarMensajeWhatsApp(formData, cart, totalPrecio);
     const telefono = "3813994145";
     const url = deviceDetection(telefono, mensaje);
-    console.log("Mensaje generado:", mensaje);
-    console.log("URL generada:", url.enlaceWhatsapp);
     window.open(url.enlaceWhatsapp, "_blank", "noopener,noreferrer");
 
     setTimeout(() => {
@@ -33,7 +29,5 @@ export const handleSubmitPedido = async (
   } catch (error) {
     console.error("Error al enviar el pedido:", error);
     alert("Ocurrió un error al enviar el pedido. Intenta nuevamente.");
-  } finally {
-    dispatch({ type: "TOGGLE_SUBMITTING" });
   }
 };

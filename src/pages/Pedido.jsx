@@ -1,4 +1,4 @@
-import React, { useReducer, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { FaRegUser, FaPhone, FaTruck, FaCreditCard } from "react-icons/fa";
@@ -9,23 +9,11 @@ import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import { VALIDATIONS } from "@/utils/validationsForm";
 import { handleSubmitPedido } from "@/utils/submitOrder";
 
-const initialState = {
-  isSubmitting: false,
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "TOGGLE_SUBMITTING":
-      return { ...state, isSubmitting: !state.isSubmitting };
-    default:
-      return state;
-  }
-};
-
 function Pedido() {
   const navigate = useNavigate();
   const { cart, eliminarCarrito } = useCarritoStore();
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -33,14 +21,12 @@ function Pedido() {
     watch,
     formState: { errors },
   } = useForm({ mode: "onChange" });
-
   const deliveryMethod = watch("delivery");
   const totalArticulos = useMemo(() => calculateAmountArticles(cart), [cart]);
   const totalPrecio = useMemo(() => calcularPrecioTotal(cart), [cart]);
 
   const onSubmit = async (formData) => {
-    console.log("Form data:", formData);
-    // dispatch({ type: "TOGGLE_SUBMITTING" }); // Activar estado de envío
+    setIsSubmitting(true);
 
     await handleSubmitPedido(
       cart,
@@ -48,10 +34,9 @@ function Pedido() {
       totalPrecio,
       reset,
       navigate,
-      eliminarCarrito,
-      dispatch
+      eliminarCarrito
     );
-    // dispatch({ type: "TOGGLE_SUBMITTING" }); // Desactivar estado de envío
+    setIsSubmitting(false);
   };
 
   return (
@@ -144,10 +129,10 @@ function Pedido() {
 
               <button
                 type="submit"
-                disabled={state.isSubmitting}
+                disabled={isSubmitting}
                 className="w-full bg-blue-600 cursor-pointer text-white py-2 rounded hover:bg-blue-700 transition"
               >
-                {state.isSubmitting ? "Enviando..." : "Confirmar Pedido"}
+                {isSubmitting ? "Enviando..." : "Confirmar Pedido"}
               </button>
             </form>
           </div>

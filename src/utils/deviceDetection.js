@@ -1,10 +1,6 @@
-import { generarMensajeWhatsApp } from "./generateMessage";
-
-export function deviceDetection(telefono, datosPedido) {
+export function deviceDetection(telefono, mensaje) {
   const userAgent = navigator.userAgent || navigator.vendor || window.opera;
   const isMobile = /android|iphone|ipad|ipod/i.test(userAgent);
-
-  const mensaje = generarMensajeWhatsApp(datosPedido);
 
   const enlaceWhatsapp = isMobile
     ? `https://wa.me/549${telefono}?text=${mensaje}`
