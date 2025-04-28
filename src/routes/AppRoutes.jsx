@@ -6,7 +6,7 @@ import Home from "@/pages/Home";
 import Carrito from "@/pages/Carrito";
 import Pedido from "@/pages/Pedido";
 import { Toaster } from "react-hot-toast";
-
+import Arrow from "@/components/home/Arrow";
 function AppRoutes() {
   const location = useLocation();
 
@@ -28,6 +28,7 @@ function AppRoutes() {
           <Route path="*" element={<Navigate to="/error" replace />} /> */}
         </Routes>
       </main>
+      <Arrow />
 
       <Footer />
     </div>
