@@ -66,6 +66,8 @@ function SearchBar() {
         <div className="relative">
           <button
             type="button"
+            title="Ordenar"
+            aria-label="Ordenar"
             onClick={() => setDropdownOpen((prev) => !prev)}
             className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors cursor-pointer"
           >
@@ -83,6 +85,8 @@ function SearchBar() {
                       className="px-4 py-2 hover:bg-gray-100 text-center"
                     >
                       <button
+                        title="Ordenar"
+                        aria-label="Ordenar"
                         onClick={() => manejarOrden(opcion)}
                         className="w-full text-left cursor-pointer"
                       >

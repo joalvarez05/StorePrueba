@@ -78,6 +78,8 @@ function ProductCard() {
               </div>
 
               <button
+                title="Agregar item"
+                aria-label="Agregar item"
                 className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 rounded-md flex items-center justify-center transition-all duration-300 transform hover:scale-105 cursor-pointer"
                 onClick={() => handleAgregarAlCarrito(product)}
               >

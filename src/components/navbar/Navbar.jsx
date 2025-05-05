@@ -115,6 +115,8 @@ const Navbar = () => {
               <div className="hidden md:flex items-center space-x-6">
                 <SearchBar />
                 <button
+                  title="Abrir informacion"
+                  aria-label="Abrir informacion"
                   onClick={handleOpen}
                   className="flex items-center justify-center space-x-2 px-6 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors cursor-pointer"
                 >
@@ -166,6 +168,8 @@ const Navbar = () => {
                   )}
                 </div>
                 <button
+                  title="Desplegar opciones"
+                  aria-label="Desplegar opciones"
                   onClick={toggleMobileMenu}
                   className="p-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors"
                 >
@@ -261,6 +265,8 @@ const Navbar = () => {
             }`}
           >
             <button
+              title="Cerrar ventana"
+              aria-label="Cerrar ventana"
               onClick={handleClose}
               className="absolute top-6 right-4 p-1 rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
             >
@@ -322,6 +328,8 @@ const Navbar = () => {
               )}
             </div>
             <button
+              title="Cerrar ventana"
+              aria-label="Cerrar ventana"
               onClick={handleClose}
               className="mt-8 w-full bg-indigo-600 text-white py-2 px-4 rounded-full hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 cursor-pointer"
             >

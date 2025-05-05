@@ -6,6 +6,7 @@ function Arrow() {
       className="go-top flex  bg-indigo-400
         shadow-lg hover:scale-110 transition-all duration-300"
       title="Ir arriba"
+      aria-label="Ir arriba"
       role="button"
     >
       <svg fill="#000000" height="0.5em" width="1em" viewBox="0 0 330 330">

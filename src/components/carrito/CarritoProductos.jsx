@@ -12,7 +12,6 @@ function CarritoProductos() {
   );
   const disminuirCantidad = useCarritoStore((state) => state.disminuirCantidad);
 
-
   return (
     <>
       {/* 🌐 Tabla para tablets y desktop */}
@@ -79,6 +78,8 @@ function CarritoProductos() {
                 <td className="px-4 py-2 text-center">
                   <div className="flex justify-center items-center space-x-2">
                     <button
+                      title="Disminuir cantidad"
+                      aria-label="Disminuir cantidad"
                       onClick={() => disminuirCantidad(producto.id)}
                       className="w-6 h-6 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center cursor-pointer"
                     >
@@ -92,22 +93,25 @@ function CarritoProductos() {
                       {producto.cantidad}
                     </span>
                     <button
+                      title="Aumentar cantidad"
+                      aria-label="Aumentar cantidad"
                       onClick={() => agregarAlCarrito(producto)}
                       className="w-6 h-6 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center cursor-pointer"
                     >
                       <FaPlus
                         size={12}
                         className="text-gray-700"
-                        title="Agregar"
+                        title="Aumentar Cantidad"
                       />
                     </button>
                   </div>
                 </td>
                 <td className="px-4 py-2 text-center">
                   <button
+                    title="Eliminar item"
+                    aria-label="Eliminar item"
                     onClick={() => eliminarDelCarrito(producto.id)}
                     className="text-red-500 hover:text-red-700 cursor-pointer"
-                    title="Eliminar"
                   >
                     <FaRegTrashAlt size={16} title="Eliminar" />
                   </button>
@@ -148,6 +152,8 @@ function CarritoProductos() {
                     {producto.nombre} {producto.marca} {producto.modelo}
                   </h3>
                   <button
+                    title="Eliminar item"
+                    aria-label="Eliminar item"
                     onClick={() => eliminarDelCarrito(producto.id)}
                     className="text-red-500 hover:text-red-700"
                   >
@@ -176,6 +182,8 @@ function CarritoProductos() {
                   </span>
                   <div className="flex space-x-2">
                     <button
+                      title="Disminuir cantidad"
+                      aria-label="Disminuir cantidad"
                       onClick={() => disminuirCantidad(producto.id)}
                       className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
                     >
@@ -185,6 +193,8 @@ function CarritoProductos() {
                       {producto.cantidad}
                     </span>
                     <button
+                      title="Aumentar cantidad"
+                      aria-label="Aumentar cantidad"
                       onClick={() => agregarAlCarrito(producto)}
                       className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
                     >

@@ -47,6 +47,8 @@ const CarritoCantidad = ({ handleRedirection }) => {
       <Link to="/pedido" onClick={handleRedirection}>
         <button
           type="button"
+          name="Confirmar pedido"
+          aria-label="Confirmar pedido"
           className="bg-green-600 cursor-pointer hover:bg-green-700 text-white font-bold w-full py-3 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
           disabled={cart.length === 0}
         >
@@ -78,6 +80,8 @@ const CarritoCantidad = ({ handleRedirection }) => {
         <Link to="/pedido" onClick={handleRedirection}>
           <button
             type="button"
+            name="Confirmar pedido"
+            aria-label="Confirmar pedido"
             className="bg-green-600 hover:bg-green-700 cursor-pointer text-white font-bold py-3 w-full rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={cart.length === 0}
           >
