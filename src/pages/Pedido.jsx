@@ -19,6 +19,7 @@ function Pedido() {
     handleSubmit,
     reset,
     watch,
+    setValue,
     formState: { errors },
   } = useForm({ mode: "onChange" });
   const deliveryMethod = watch("delivery");
@@ -61,6 +62,7 @@ function Pedido() {
             >
               {/* Nombre */}
               <InputField
+                autocomplete="name"
                 id="nombre"
                 label="Nombre y Apellido"
                 icon={<FaRegUser />}
@@ -73,6 +75,7 @@ function Pedido() {
               <InputField
                 id="telefono"
                 label="Teléfono"
+                autocomplete="tel"
                 icon={<FaPhone />}
                 placeholder="Tu teléfono..."
                 register={register("telefono", VALIDATIONS.telefono)}
@@ -96,7 +99,10 @@ function Pedido() {
               {/* Dirección */}
               {deliveryMethod === "Delivery" && (
                 <>
-                  <Autocomplete></Autocomplete>
+                  <Autocomplete
+                    autocomplete="direccion"
+                    onSelect={(value) => setValue("direccion", value)}
+                  />
                   <InputField
                     id="localidad"
                     label="Localidad *"

@@ -28,7 +28,7 @@ const Autocomplete = ({ onSelect }) => {
   const handleSelect = (place) => {
     setQuery(place.place_name);
     setSuggestions([]);
-    if (onSelect) onSelect(place);
+    if (onSelect) onSelect(place.place_name); // ⬅️ Mandamos el lugar al componente padre
   };
 
   return (
