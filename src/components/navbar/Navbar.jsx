@@ -116,7 +116,7 @@ const Navbar = () => {
                 <SearchBar />
                 <button
                   onClick={handleOpen}
-                  className="flex items-center space-x-2 px-6 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors cursor-pointer"
+                  className="flex items-center justify-center space-x-2 px-6 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors cursor-pointer"
                 >
                   <FaInfoCircle className="h-4 w-4" />
                   <span className="text-sm font-semibold ">{nombre}</span>

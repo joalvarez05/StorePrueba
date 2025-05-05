@@ -37,7 +37,7 @@ function Home() {
       <section className="pt-6 pb-8 ">
         <div className="container mx-auto px-4">
           <div className="flex justify-center items-center mb-8">
-            <h1 className="text-2xl font-bold bg-gradient-to-r tracking-wider bg-clip-text py-1 font-mono">
+            <h1 className="text-2xl tracking-wider py-1">
               {data && data.length > 0 ? data[0].nombre : "Cargando..."}
             </h1>
           </div>

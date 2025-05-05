@@ -14,8 +14,8 @@ function Carrito() {
       </div>
       <div className="flex flex-col container mx-auto">
         <div className="py-4">
-          <h2 className="text-2xl font-extrabold tracking-wider bg-clip-text py-1 ms-5">
-            Mi Carrito ({totalArticulos} artículos)
+          <h2 className="text-xl md:text-2xl font-bold tracking-wider bg-clip-text py-1 ms-5">
+            Los más populares ({totalArticulos} artículos)
           </h2>
         </div>
         <div className="w-full md:w-12/12 mt-1">

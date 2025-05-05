@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "BR Segma";
+  src: url("https://db.onlinewebfonts.com/t/5c6bcda3c80a7291385d633bff8536ae.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/5c6bcda3c80a7291385d633bff8536ae.woff")
+      format("woff");
+}
+
+h1,
+h2,
+h3,
+span,
+button {
+  font-family: "BR Segma", sans-serif;
+}

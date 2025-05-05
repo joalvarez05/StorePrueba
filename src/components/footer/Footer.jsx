@@ -10,7 +10,7 @@ function Footer() {
     );
   }
   return (
-    <footer className="bg-gray-100 pt-4 text-center text-sm text-gray-700">
+    <footer className="bg-gray-100 pt-4 text-center text-sm text-gray-700 mt-2">
       <div className="px-4 max-w-4xl mx-auto">
         <p className="font-medium">
           No pagues por adelantado sin conocer al local. Todos los ítems
@@ -20,7 +20,7 @@ function Footer() {
         <div className="flex justify-center items-center">
           <span>Desarrollado por</span>
           <a
-            href="https://uhmo.com.ar/"
+            href="https://uhmostore.netlify.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center"
