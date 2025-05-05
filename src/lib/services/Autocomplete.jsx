@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 const MAPBOX_TOKEN = import.meta.env.VITE_API_TOKEN;
-console.log(MAPBOX_TOKEN);
 
 const Autocomplete = ({ onSelect }) => {
   const [query, setQuery] = useState("");
