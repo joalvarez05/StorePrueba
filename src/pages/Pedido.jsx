@@ -8,7 +8,7 @@ import { calculateAmountArticles } from "@/utils/calculateAmountArticles";
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import { VALIDATIONS } from "@/utils/validationsForm";
 import { handleSubmitPedido } from "@/utils/submitOrder";
-
+import Autocomplete from "@/lib/services/Autocomplete";
 function Pedido() {
   const navigate = useNavigate();
   const { cart, eliminarCarrito } = useCarritoStore();
@@ -93,23 +93,17 @@ function Pedido() {
                 ]}
               />
 
-              {/* Dirección & Localidad si aplica */}
+              {/* Dirección */}
               {deliveryMethod === "Delivery" && (
                 <>
-                  <InputField
-                    id="direccion"
-                    label="Dirección de entrega *"
-                    placeholder="Tu dirección..."
-                    register={register("direccion", VALIDATIONS.direccion)}
-                    error={errors.direccion}
-                  />
+                  <Autocomplete></Autocomplete>
                   <InputField
                     id="localidad"
                     label="Localidad *"
                     placeholder="Tu localidad..."
                     register={register("localidad", VALIDATIONS.localidad)}
                     error={errors.localidad}
-                  />
+                  />{" "}
                 </>
               )}
 
