@@ -3,15 +3,9 @@ import empresa from "@/data/empresa.json";
 import ProductCard from "@/components/home/ProductCard";
 import useMetaTags from "@/lib/hooks/useMetaTags";
 import SearchBar from "@/components/navbar/SearchBar";
-import { useProductosFiltrados } from "@/lib/stores/useProductosFiltrados";
 
 function Home() {
-  const [filtro, setFiltro] = useState("destacado");
   const [data, setData] = useState([]);
-  const productosFiltrados = useProductosFiltrados(
-    (state) => state.productosFiltrados
-  );
-  const hayFiltrado = productosFiltrados.length > 0;
 
   useEffect(() => {
     const dataList = empresa.map((item) => item.empresa);
