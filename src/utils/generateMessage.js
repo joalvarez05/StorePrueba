@@ -27,17 +27,19 @@ export const generarMensajeWhatsApp = (formData, cart, totalPrecio) => {
   const productos = cart
     ?.map(
       (item) =>
-        `${sanitizarInput(item.nombre)}%0A${sanitizarInput(
+        `• Producto: ${sanitizarInput(item.nombre)}%0A• Marca: ${sanitizarInput(
           item.marca
-        )}%0A${sanitizarInput(item.modelo)}%0ACantidad: ${item.cantidad}%0A`
+        )}%0A• Modelo: ${sanitizarInput(item.modelo)}%0A• Cantidad: ${
+          item.cantidad
+        }%0A• Precio: $${item.precio?.toLocaleString("es-AR") || "0"}%0A`
     )
     .join("%0A");
 
-  const mensaje = `_¡Hola! Te paso el resumen de mi pedido_%0A🗓️ Fecha: ${horaActual()}%0A👤 Nombre: ${nombre}%0A📞 Teléfono: ${telefono}%0A💲 Forma de Pago: ${pago}%0A🟰 Total: ${totalPrecio}%0A%0A🚚 Forma de Entrega: ${delivery}%0A${
+  const mensaje = `¡Hola! Te paso el resumen de mi pedido 🧾%0A%0A🗓️ Fecha: ${horaActual()}%0A👤 Nombre: ${nombre}%0A📞 Teléfono: ${telefono}%0A💳 Forma de pago: ${pago}%0A🚚 Entrega: ${delivery}%0A💰 Total: ${totalPrecio}%0A${
     delivery === "Delivery"
       ? `%0A📍 Dirección: ${direccion}%0A🏠 Localidad: ${localidad}%0A`
       : ""
-  }%0A*Mi pedido es:*%0A${productos}%0A*Total: ${totalPrecio}*%0A_Espero tu respuesta para confirmar mi pedido_`;
+  }%0A🛍️ Detalles del pedido:%0A${productos}%0AQuedo atento a tu confirmación ✅%0A¡Muchas gracias!`;
 
   return mensaje;
 };

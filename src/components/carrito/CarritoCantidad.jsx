@@ -3,10 +3,9 @@ import { FaQuestionCircle, FaShieldAlt } from "react-icons/fa";
 import { calcularPrecioTotal } from "@/utils/calculateTotalPrice";
 import useCarritoStore from "@/lib/stores/useCarritoStore";
 
-const CarritoCantidad = ({ handleRedirection }) => {
+const CarritoCantidad = ({ nombreEmpresa }) => {
   const cart = useCarritoStore((state) => state.cart);
   const total = calcularPrecioTotal(cart);
-
   const renderHelpDetails = () => (
     <div className="mt-8 space-y-4 text-sm text-gray-700">
       <details className="bg-gray-50 border border-gray-200 rounded-lg p-4">
@@ -44,7 +43,7 @@ const CarritoCantidad = ({ handleRedirection }) => {
         </div>
       )}
 
-      <Link to="/pedido" onClick={handleRedirection}>
+      <Link to={`/${nombreEmpresa}/pedido`}>
         <button
           type="button"
           name="Confirmar pedido"
@@ -77,7 +76,7 @@ const CarritoCantidad = ({ handleRedirection }) => {
         </div>
       </div>
       <div className="flex flex-col justify-between h-full mt-2">
-        <Link to="/pedido" onClick={handleRedirection}>
+        <Link to={`/${nombreEmpresa}/pedido`}>
           <button
             type="button"
             name="Confirmar pedido"

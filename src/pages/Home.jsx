@@ -11,10 +11,10 @@ import Navbar from "@/components/navbar/Navbar";
 function Home() {
   const { nombreEmpresa } = useParams();
   const { empresa } = useEmpresaStore();
+
   useEffect(() => {
     getEmpresaInfo(nombreEmpresa);
   }, [nombreEmpresa]);
-
   useMetaTags(empresa);
   if (!empresa) return <Loader />;
 

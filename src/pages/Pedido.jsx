@@ -10,12 +10,13 @@ import { VALIDATIONS } from "@/utils/validationsForm";
 import { handleSubmitPedido } from "@/utils/submitOrder";
 import Autocomplete from "@/lib/services/Autocomplete";
 import Navbar from "@/components/navbar/Navbar";
+import { useEmpresaStore } from "@/lib/stores/useEmpresaStore";
 
 function Pedido() {
   const navigate = useNavigate();
   const { cart, eliminarCarrito } = useCarritoStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const { empresa } = useEmpresaStore();
   const {
     register,
     handleSubmit,
@@ -37,7 +38,8 @@ function Pedido() {
       totalPrecio,
       reset,
       navigate,
-      eliminarCarrito
+      eliminarCarrito,
+      empresa.contacto.telefono
     );
     setIsSubmitting(false);
   };

@@ -6,6 +6,7 @@ import Carrito from "@/pages/Carrito";
 import Pedido from "@/pages/Pedido";
 import { Toaster } from "react-hot-toast";
 import Arrow from "@/components/home/Arrow";
+
 function AppRoutes() {
   const location = useLocation();
 
@@ -20,10 +21,8 @@ function AppRoutes() {
       <main className="flex-grow">
         <Routes>
           <Route path="/:nombreEmpresa" element={<Home />} />
-          <Route path="/carrito" element={<Carrito />} />
-          <Route path="/pedido" element={<Pedido />} />
-          {/* <Route path="/error" element={<Error />} />
-          <Route path="*" element={<Navigate to="/error" replace />} /> */}
+          <Route path="/:nombreEmpresa/carrito" element={<Carrito />} />
+          <Route path="/:nombreEmpresa/pedido" element={<Pedido />} />
         </Routes>
       </main>
       <Arrow />

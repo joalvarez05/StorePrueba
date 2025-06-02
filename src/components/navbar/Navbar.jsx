@@ -61,7 +61,7 @@ const Navbar = () => {
   const enlaceWhatsapp = telefono
     ? deviceDetection(telefono).enlaceWhatsapp
     : "";
-
+  const storedEmpresa = JSON.parse(sessionStorage.getItem("empresa"));
 
   return (
     <>
@@ -99,7 +99,7 @@ const Navbar = () => {
                 <div className="relative inline-block py-1">
                   {itemCount > 0 ? (
                     <Link
-                      to="/carrito"
+                      to={`/${nombreEmpresa}/carrito`}
                       className="flex items-center"
                       title="Carrito"
                     >
@@ -123,7 +123,7 @@ const Navbar = () => {
               <div className="md:hidden">
                 <div className="relative inline-block me-3">
                   {itemCount > 0 ? (
-                    <Link to="/carrito" title="Carrito">
+                    <Link to={`/${nombreEmpresa}/carrito`} title="Carrito">
                       <FaShoppingCart size={24} />
                       {itemCount > 0 && (
                         <span className="absolute top-[-13px] left-[12px] text-white bg-orange-600 rounded-full px-1 text-sm font-semibold">

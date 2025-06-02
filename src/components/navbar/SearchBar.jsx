@@ -23,7 +23,6 @@ function SearchBar() {
 
     if ((hayBusqueda || hayOrden) && productos.length > 0) {
       let filtrados = productos;
-      console.log(filtrados);
       if (hayBusqueda) {
         filtrados = filtrados.filter(
           (prod) =>
