@@ -3,9 +3,7 @@ import CarritoCantidad from "@/components/carrito/CarritoCantidad";
 import CarritoProductos from "@/components/carrito/CarritoProductos";
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import { useAmountArticles } from "@/lib/hooks/useAmountArticles";
-import { useEmpresaStore } from "@/lib/stores/useEmpresaStore";
 function Carrito() {
-  const { param } = useEmpresaStore();
   const totalArticulos = useAmountArticles();
   return (
     <>
@@ -23,7 +21,7 @@ function Carrito() {
             <CarritoProductos />
           </div>
           <div className="w-full md:w-12/12 container lg:w-12/12 mt-2 md:mt-0">
-            <CarritoCantidad nombreEmpresa={param} />
+            <CarritoCantidad  />
           </div>
         </div>
       </div>

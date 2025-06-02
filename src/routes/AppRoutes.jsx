@@ -29,7 +29,7 @@ function AppRoutes() {
         </Routes>
       </main>
       <Arrow />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

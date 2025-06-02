@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import { FaQuestionCircle, FaShieldAlt } from "react-icons/fa";
 import { calcularPrecioTotal } from "@/utils/calculateTotalPrice";
 import useCarritoStore from "@/lib/stores/useCarritoStore";
+import { useEmpresaStore } from "@/lib/stores/useEmpresaStore";
 
-const CarritoCantidad = ({ nombreEmpresa }) => {
+const CarritoCantidad = () => {
+  const { param } = useEmpresaStore();
+
   const cart = useCarritoStore((state) => state.cart);
   const total = calcularPrecioTotal(cart);
   const renderHelpDetails = () => (
@@ -43,7 +46,7 @@ const CarritoCantidad = ({ nombreEmpresa }) => {
         </div>
       )}
 
-      <Link to={`/${nombreEmpresa}/pedido`}>
+      <Link to={`/${param}/pedido`}>
         <button
           type="button"
           name="Confirmar pedido"
@@ -76,7 +79,7 @@ const CarritoCantidad = ({ nombreEmpresa }) => {
         </div>
       </div>
       <div className="flex flex-col justify-between h-full mt-2">
-        <Link to={`/${nombreEmpresa}/pedido`}>
+        <Link to={`/${param}/pedido`}>
           <button
             type="button"
             name="Confirmar pedido"

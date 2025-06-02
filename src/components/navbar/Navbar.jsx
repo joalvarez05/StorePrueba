@@ -17,11 +17,19 @@ import useCarritoStore from "@/lib/stores/useCarritoStore";
 import { useNavbarAnimations } from "@/lib/hooks/useNavbarAnimations";
 import { deviceDetection } from "@/utils/deviceDetection";
 import SearchBar from "./SearchBar";
+import Loader from "@/components/Loader";
 
 const Navbar = () => {
   const { empresa, param } = useEmpresaStore();
+  const empresaSaved = sessionStorage.getItem("empresa");
+  const empresaGuardada = empresaSaved ? JSON.parse(empresaSaved) : null;
+  if (!empresa && !empresaGuardada) {
+    return <Loader />;
+  }
+  const empresaData = empresa || empresaGuardada;
   const [itemCount, setItemCount] = useState(0);
   const cart = useCarritoStore((state) => state.cart);
+
   const {
     isOpen,
     isMobileAnimatingIn,
@@ -42,15 +50,14 @@ const Navbar = () => {
     setItemCount(totalProductos);
   }, [cart]);
 
-  if (!empresa) return null;
-
   const {
     nombre,
     logo,
     direccion: { calle, ciudad, codigoPostal, numero },
     contacto: { telefono, email },
     redesSociales: { instagram, facebook },
-  } = empresa;
+  } = empresaData;
+
   const capitalizedCiudad = ciudad.charAt(0).toUpperCase() + ciudad.slice(1);
   const capitalizedCalle = calle.charAt(0).toUpperCase() + calle.slice(1);
 
@@ -252,59 +259,23 @@ const Navbar = () => {
             >
               <FaTimes className="h-5 w-5 text-gray-500" />
             </button>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-              {nombre}
-            </h2>
-            <div className="space-y-4">
-              <a
-                href={`https://www.google.com/maps/search/?api=1&query=${`${capitalizedCalle} ${numero}, ${capitalizedCiudad}`}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-3 text-gray-600 hover:text-gray-900 transition-colors cursor-pointer"
-              >
-                <FaMapMarkerAlt className="h-5 w-5" />
-                <span>
-                  {capitalizedCalle} {numero}, {capitalizedCiudad}, CP{" "}
-                  {codigoPostal}{" "}
-                </span>
-              </a>
-              <a
-                href={`tel:${telefono}`}
-                target="_blank"
-                className="flex items-center space-x-3 text-gray-600 hover:text-gray-900 transition-colors"
-              >
-                <FaPhone className="h-5 w-5" />
-                <span>{telefono}</span>
-              </a>
-
-              <a
-                href={enlaceWhatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-3 text-green-600 hover:text-green-700 transition-colors cursor-pointer"
-              >
-                <FaWhatsapp className="h-5 w-5" />
-                <span>WhatsApp</span>
-              </a>
-              <a
-                href={`mailto:${email}`}
-                target="_blank"
-                className="flex items-center space-x-3 text-gray-600 hover:text-gray-900 transition-colors"
-                aria-label={`Enviar correo a ${email}`}
-              >
-                <FaEnvelope className="h-5 w-5" />
-                <span>{email}</span>
-              </a>
-
+            <h2 className="text-2xl font-bold mb-4">{nombre}</h2>
+            <p className="mb-2">
+              Dirección: {capitalizedCalle} {numero}, {capitalizedCiudad}, CP{" "}
+              {codigoPostal}
+            </p>
+            <p className="mb-2">Teléfono: {telefono}</p>
+            <p className="mb-2">Correo: {email}</p>
+            <p className="mb-2">
+              Redes sociales:
               {instagram && (
                 <a
                   href={`https://www.instagram.com/${instagram}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-3 text-pink-600 hover:text-pink-700 transition-colors"
+                  className="text-pink-600 hover:underline ml-2"
                 >
-                  <FaInstagram className="h-5 w-5" />
-                  <span>Instagram</span>
+                  Instagram
                 </a>
               )}
               {facebook && (
@@ -312,21 +283,12 @@ const Navbar = () => {
                   href={`https://www.facebook.com/${facebook}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-3 text-blue-600 hover:text-blue-700 transition-colors"
+                  className="text-blue-600 hover:underline ml-2"
                 >
-                  <FaFacebook className="h-5 w-5" />
-                  <span>Facebook</span>
+                  Facebook
                 </a>
               )}
-            </div>
-            <button
-              title="Cerrar ventana"
-              aria-label="Cerrar ventana"
-              onClick={handleClose}
-              className="mt-8 w-full bg-indigo-600 text-white py-2 px-4 rounded-full hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 cursor-pointer"
-            >
-              Cerrar
-            </button>
+            </p>
           </div>
         </div>
       )}
