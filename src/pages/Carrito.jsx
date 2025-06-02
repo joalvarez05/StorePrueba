@@ -3,17 +3,12 @@ import CarritoCantidad from "@/components/carrito/CarritoCantidad";
 import CarritoProductos from "@/components/carrito/CarritoProductos";
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import { useAmountArticles } from "@/lib/hooks/useAmountArticles";
-import Navbar from "@/components/navbar/Navbar";
-import { useParams } from "react-router-dom";
-
+import { useEmpresaStore } from "@/lib/stores/useEmpresaStore";
 function Carrito() {
-  const { nombreEmpresa } = useParams();
+  const { param } = useEmpresaStore();
   const totalArticulos = useAmountArticles();
-
   return (
     <>
-      <Navbar />
-
       <div className="px-1 sm:px-1 md:px-8 lg:px-18">
         <div className="py-4 ms-5">
           <Breadcrumb />
@@ -28,7 +23,7 @@ function Carrito() {
             <CarritoProductos />
           </div>
           <div className="w-full md:w-12/12 container lg:w-12/12 mt-2 md:mt-0">
-            <CarritoCantidad nombreEmpresa={nombreEmpresa} />
+            <CarritoCantidad nombreEmpresa={param} />
           </div>
         </div>
       </div>

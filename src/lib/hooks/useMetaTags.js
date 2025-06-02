@@ -2,6 +2,8 @@ import { useEffect } from "react";
 
 const useMetaTags = (empresa) => {
   useEffect(() => {
+    if (!empresa) return;
+
     if (empresa && empresa.length > 0) {
       const empresa = empresa;
 

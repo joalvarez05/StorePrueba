@@ -3,6 +3,7 @@ import { create } from "zustand";
 export const useEmpresaStore = create((set) => ({
   empresa: null,
   productos: [],
+  param: null,
 
   setEmpresaInfo: (data) => {
     if (!data) {
@@ -20,4 +21,6 @@ export const useEmpresaStore = create((set) => ({
   setProductos: (productos) => {
     set({ productos: Array.isArray(productos) ? productos : [] });
   },
+
+  setParam: (param) => set({ param }),
 }));

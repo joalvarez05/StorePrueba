@@ -1,14 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
 import {
   FaBars,
   FaTimes,
-  FaSearch,
   FaMapMarkerAlt,
   FaPhone,
   FaEnvelope,
-  FaFilter,
   FaInfoCircle,
   FaWhatsapp,
   FaInstagram,
@@ -22,8 +19,7 @@ import { deviceDetection } from "@/utils/deviceDetection";
 import SearchBar from "./SearchBar";
 
 const Navbar = () => {
-  const { nombreEmpresa } = useParams();
-  const { empresa } = useEmpresaStore();
+  const { empresa, param } = useEmpresaStore();
   const [itemCount, setItemCount] = useState(0);
   const cart = useCarritoStore((state) => state.cart);
   const {
@@ -61,7 +57,6 @@ const Navbar = () => {
   const enlaceWhatsapp = telefono
     ? deviceDetection(telefono).enlaceWhatsapp
     : "";
-  const storedEmpresa = JSON.parse(sessionStorage.getItem("empresa"));
 
   return (
     <>
@@ -71,7 +66,7 @@ const Navbar = () => {
             <div className="flex items-center justify-between h-20">
               {/* Logo */}
               <div className="flex-shrink-0">
-                <Link to={`/${nombreEmpresa || ""}`}>
+                <Link to={`/${param}`}>
                   {logo ? (
                     <img
                       src={logo}
@@ -99,7 +94,7 @@ const Navbar = () => {
                 <div className="relative inline-block py-1">
                   {itemCount > 0 ? (
                     <Link
-                      to={`/${nombreEmpresa}/carrito`}
+                      to={`/${param}/carrito`}
                       className="flex items-center"
                       title="Carrito"
                     >
@@ -123,7 +118,7 @@ const Navbar = () => {
               <div className="md:hidden">
                 <div className="relative inline-block me-3">
                   {itemCount > 0 ? (
-                    <Link to={`/${nombreEmpresa}/carrito`} title="Carrito">
+                    <Link to={`/${param}/carrito`} title="Carrito">
                       <FaShoppingCart size={24} />
                       {itemCount > 0 && (
                         <span className="absolute top-[-13px] left-[12px] text-white bg-orange-600 rounded-full px-1 text-sm font-semibold">

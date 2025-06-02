@@ -9,7 +9,6 @@ import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import { VALIDATIONS } from "@/utils/validationsForm";
 import { handleSubmitPedido } from "@/utils/submitOrder";
 import Autocomplete from "@/lib/services/Autocomplete";
-import Navbar from "@/components/navbar/Navbar";
 import { useEmpresaStore } from "@/lib/stores/useEmpresaStore";
 
 function Pedido() {
@@ -46,7 +45,6 @@ function Pedido() {
 
   return (
     <>
-      <Navbar />
       <div className="px-1 sm:px-1 md:px-8 lg:px-18">
         <div className="py-4 ms-5">
           <Breadcrumb />
