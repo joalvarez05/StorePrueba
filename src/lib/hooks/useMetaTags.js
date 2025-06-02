@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
-const useMetaTags = (data) => {
+const useMetaTags = (empresa) => {
   useEffect(() => {
-    if (data && data.length > 0) {
-      const empresa = data[0];
+    if (empresa && empresa.length > 0) {
+      const empresa = empresa;
 
       //  título
       document.title = empresa.nombre || "nada";
@@ -39,7 +39,10 @@ const useMetaTags = (data) => {
         canonicalTag.setAttribute("rel", "canonical");
         document.head.appendChild(canonicalTag);
       }
-      canonicalTag.setAttribute("href", empresa.url || "https://uhmo.store/");
+      canonicalTag.setAttribute(
+        "href",
+        `https://uhmo-store.netlify.app/${empresa.nombre}`
+      );
 
       let icon = document.querySelector("link[rel='icon']");
       if (!icon) {
@@ -94,7 +97,10 @@ const useMetaTags = (data) => {
         ogUrlTag.setAttribute("property", "og:url");
         document.head.appendChild(ogUrlTag);
       }
-      ogUrlTag.setAttribute("content", empresa.url || "https://uhmo.store/");
+      ogUrlTag.setAttribute(
+        "content",
+        `https://uhmo-store.netlify.app/${empresa.nombre}`
+      );
 
       let ogLocaleTag = document.querySelector("meta[property='og:locale']");
       if (!ogLocaleTag) {
@@ -151,7 +157,7 @@ const useMetaTags = (data) => {
           "https://res.cloudinary.com/druvz15q9/image/upload/v1737947671/uhmoLogoLight_ufr6vq.webp"
       );
     }
-  }, [data]);
+  }, [empresa]);
 };
 
 export default useMetaTags;

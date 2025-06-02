@@ -1,26 +1,32 @@
-import React, { useState, useEffect } from "react";
-import empresa from "@/data/empresa.json";
+import React, { useEffect } from "react";
 import ProductCard from "@/components/home/ProductCard";
 import useMetaTags from "@/lib/hooks/useMetaTags";
 import SearchBar from "@/components/navbar/SearchBar";
+import { useParams } from "react-router-dom";
+import { getEmpresaInfo } from "@/lib/services/getEmpresaInfo";
+import { useEmpresaStore } from "@/lib/stores/useEmpresaStore";
+import Loader from "@/components/Loader";
+import Navbar from "@/components/navbar/Navbar";
 
 function Home() {
-  const [data, setData] = useState([]);
-
+  const { nombreEmpresa } = useParams();
+  const { empresa } = useEmpresaStore();
   useEffect(() => {
-    const dataList = empresa.map((item) => item.empresa);
-    setData(dataList);
-  }, []);
-  useMetaTags(data);
+    getEmpresaInfo(nombreEmpresa);
+  }, [nombreEmpresa]);
+
+  useMetaTags(empresa);
+  if (!empresa) return <Loader />;
 
   return (
     <>
+      <Navbar />
       {/* banner empresa */}
       <div className="w-full flex justify-center">
         <div className="max-h-3/6 h-auto pt-1">
-          {data && data.length > 0 && data[0].banner ? (
+          {empresa && empresa.length > 0 && empresa.banner ? (
             <img
-              src={data[0].banner}
+              src={empresa.banner}
               alt="Banner"
               className="w-full sm:h-[180px] md:h-[200px] object-cover sm:rounded-xl "
             />
@@ -32,7 +38,7 @@ function Home() {
         <div className="container mx-auto px-4">
           <div className="flex justify-center items-center mb-8">
             <h1 className="text-2xl tracking-wider py-1">
-              {data && data.length > 0 ? data[0].nombre : "Cargando..."}
+              {empresa && empresa.nombre}
             </h1>
           </div>
           <div className="pb-3 md:hidden">

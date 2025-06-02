@@ -1,11 +1,11 @@
-import empresa from "@/data/empresa";
-
+import { useEmpresaStore } from "@/lib/stores/useEmpresaStore";
+import Loader from "@/components/Loader";
 function Footer() {
-  const empresaActual = empresa[0].empresa;
-  if (!empresaActual || !empresaActual.nombre) {
+  const { empresa } = useEmpresaStore();
+  if (!empresa || !empresa.nombre) {
     return (
-      <footer className="text-center py-4 text-gray-500 text-sm">
-        No se encontró la tienda que buscas :(
+      <footer className="text-center font-medium py-4 text-gray-500 text-md">
+        <Loader />
       </footer>
     );
   }
@@ -15,7 +15,7 @@ function Footer() {
         <p className="font-medium">
           No pagues por adelantado sin conocer al local. Todos los ítems
           ofrecidos son responsabilidad de{" "}
-          <span className="text-pink-600">{empresaActual.nombre}</span>
+          <span className="text-pink-600">{empresa.nombre}</span>
         </p>
         <div className="flex justify-center items-center">
           <span>Desarrollado por</span>

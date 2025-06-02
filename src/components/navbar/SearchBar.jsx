@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { FaSearch, FaFilter } from "react-icons/fa";
-import productosTodos from "@/data/productos";
 import { useProductosFiltrados } from "@/lib/stores/useProductosFiltrados";
+import { useEmpresaStore } from "@/lib/stores/useEmpresaStore";
 
 function SearchBar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [ordenar, setOrdenar] = useState("Filtrar");
   const [searchValue, setSearchValue] = useState("");
+  const { productos } = useEmpresaStore();
 
   const setProductosFiltrados = useProductosFiltrados(
     (state) => state.setProductosFiltrados
   );
-
   const manejarOrden = (opcion) => {
     setOrdenar(opcion);
     setDropdownOpen(false);
@@ -21,12 +21,15 @@ function SearchBar() {
     const hayBusqueda = searchValue.trim() !== "";
     const hayOrden = ordenar === "Mayor precio" || ordenar === "Menor precio";
 
-    if ((hayBusqueda || hayOrden) && productosTodos.length > 0) {
-      let filtrados = productosTodos;
-
+    if ((hayBusqueda || hayOrden) && productos.length > 0) {
+      let filtrados = productos;
+      console.log(filtrados);
       if (hayBusqueda) {
-        filtrados = filtrados.filter((prod) =>
-          prod.nombre.toLowerCase().includes(searchValue.toLowerCase())
+        filtrados = filtrados.filter(
+          (prod) =>
+            prod.nombre.toLowerCase().includes(searchValue.toLowerCase()) ||
+            prod.marca.toLowerCase().includes(searchValue.toLowerCase()) ||
+            prod.modelo.toLowerCase().includes(searchValue.toLowerCase())
         );
       }
 
@@ -38,9 +41,9 @@ function SearchBar() {
 
       setProductosFiltrados(filtrados);
     } else {
-      setProductosFiltrados([]);
+      setProductosFiltrados(productos);
     }
-  }, [searchValue, ordenar, setProductosFiltrados]);
+  }, [searchValue, ordenar, productos, setProductosFiltrados]);
 
   return (
     <>
@@ -58,7 +61,7 @@ function SearchBar() {
             placeholder="Buscar..."
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
-            className="pl-10 pr-4 py-2 w-60 md:w-64 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="pl-10 pr-4 py-2 w-50 md:w-64 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
 

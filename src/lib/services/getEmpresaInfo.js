@@ -1,26 +1,22 @@
-import { useEmpresaStore } from "../stores/useEmpresaStore";
-import { useProductosStore } from "../stores/useProductosStore";
-const API_HOST = import.meta.env.VITE_API_HOST;
+import { useEmpresaStore } from "@/lib/stores/useEmpresaStore";
+import { API_HOST, ENDPOINTS } from "@/utils/config";
+import { MENSAJES_ERROR } from "@/errors/errors";
 
-const MENSAJES_ERROR = {
-  400: "Solicitud incorrecta",
-  401: "No autorizado",
-  404: "Recurso no encontrado",
-  500: "Error interno del servidor",
-};
-
-export const getEmpresaInfo = async () => {
+export const getEmpresaInfo = async (params) => {
   try {
     if (!API_HOST) {
       throw new Error("API_HOST no está configurado");
     }
 
-    const response = await fetch(`${API_HOST}/api/empresa`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `${API_HOST}/${ENDPOINTS.getEmpresaInfo}/${params}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const isJson = response.headers
       .get("content-type")
@@ -34,14 +30,12 @@ export const getEmpresaInfo = async () => {
     }
 
     const data = isJson ? await response.json() : null;
-
     if (data) {
       const { productos, ...infoEmpresa } = data;
 
       useEmpresaStore.getState().setEmpresaInfo(infoEmpresa);
-      useProductosStore.getState().setProductos(productos);
+      useEmpresaStore.getState().setProductos(productos);
     }
-
     return data;
   } catch (error) {
     console.error(

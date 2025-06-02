@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import empresa from "@/data/empresa";
+import { useParams } from "react-router-dom";
 import {
   FaBars,
   FaTimes,
@@ -12,33 +12,20 @@ import {
   FaInfoCircle,
   FaWhatsapp,
   FaInstagram,
+  FaFacebook,
   FaShoppingCart,
 } from "react-icons/fa";
-// import { getEmpresaInfo } from "@/lib/services/getEmpresaInfo";
-// import { useEmpresaStore } from "@/lib/stores/useEmpresaStore";
+import { useEmpresaStore } from "@/lib/stores/useEmpresaStore";
 import useCarritoStore from "@/lib/stores/useCarritoStore";
 import { useNavbarAnimations } from "@/lib/hooks/useNavbarAnimations";
 import { deviceDetection } from "@/utils/deviceDetection";
 import SearchBar from "./SearchBar";
-const API_HOST = import.meta.env.VITE_API_HOST;
-const Navbar = () => {
-  // const empresa = useEmpresaStore((state) => state.empresa);
 
-  // if (!empresa) return null;
-  // const { nombre, descripcion, logo, direccion, contacto, redesSociales } = empresa;
-  const [infoEmpresa] = useState(empresa);
-  const [enlace, setEnlace] = useState("");
+const Navbar = () => {
+  const { nombreEmpresa } = useParams();
+  const { empresa } = useEmpresaStore();
   const [itemCount, setItemCount] = useState(0);
   const cart = useCarritoStore((state) => state.cart);
-
-  useEffect(() => {
-    const totalProductos = cart.reduce(
-      (total, item) => total + item.cantidad,
-      0
-    );
-    setItemCount(totalProductos);
-  }, [cart]);
-
   const {
     isOpen,
     isMobileAnimatingIn,
@@ -51,40 +38,31 @@ const Navbar = () => {
     handleClose,
   } = useNavbarAnimations();
 
+  useEffect(() => {
+    const totalProductos = cart.reduce(
+      (total, item) => total + item.cantidad,
+      0
+    );
+    setItemCount(totalProductos);
+  }, [cart]);
+
+  if (!empresa) return null;
+
   const {
     nombre,
     logo,
-    direccion: { calle, numero, ciudad },
+    direccion: { calle, ciudad, codigoPostal, numero },
     contacto: { telefono, email },
-    redes_sociales: { instagram },
-  } = infoEmpresa[0].empresa;
+    redesSociales: { instagram, facebook },
+  } = empresa;
+  const capitalizedCiudad = ciudad.charAt(0).toUpperCase() + ciudad.slice(1);
+  const capitalizedCalle = calle.charAt(0).toUpperCase() + calle.slice(1);
 
-  useEffect(() => {
-    const { enlaceWhatsapp } = deviceDetection(telefono);
-    setEnlace(enlaceWhatsapp);
-    // getEmpresaInfo();
-    //Hay que hacer el store de zustand para alojar la info que viene de getEmpresaInfo().
-  }, [telefono]);
+  const enlaceWhatsapp = telefono
+    ? deviceDetection(telefono).enlaceWhatsapp
+    : "";
 
-  //useEffect pára ordenar los productos de acuerdo al estado "ordenar", habria que cambiar el nombre del store por el nuevo store de zustand.
 
-  // useEffect(() => {
-  //   if (productoStore.length > 0) {
-  //     let filtrados = productoStore.filter((prod) =>
-  //       prod.marca.toLowerCase().includes(searchValue.toLowerCase())
-  //     );
-
-  //     if (ordenar === "Mayor precio") {
-  //       filtrados = filtrados.sort((a, b) => b.precio - a.precio);
-  //     } else if (ordenar === "Menor precio") {
-  //       filtrados = filtrados.sort((a, b) => a.precio - b.precio);
-  //     }
-
-  //     setProductosFiltrados(filtrados);
-  //   }
-  // }, [searchValue, productoStore, ordenar]);
-
-  //En resumen falta guardar los datos en un store de zustand, modificar el filtrado de busqueda de productos directamente leyendo el store de zustand.
   return (
     <>
       <nav className="bg-white shadow-lg pb-20" id="top">
@@ -93,21 +71,16 @@ const Navbar = () => {
             <div className="flex items-center justify-between h-20">
               {/* Logo */}
               <div className="flex-shrink-0">
-                {/*<Link to="/">
-             {logo ? (
-                <img src={`${API_HOST}/${logo}`} alt={`${nombre} logo`} />
-              ) : (
-                <span className="font-semibold">{`${nombre}`}</span>
-              )} 
-              </Link>*/}
-                <Link to="/">
-                  <img
-                    src={logo}
-                    // src={`${API_HOST}/${empresa.logo}`}
-
-                    alt={`logo de ${nombre}`}
-                    className="h-18 w-auto object-contain"
-                  />
+                <Link to={`/${nombreEmpresa || ""}`}>
+                  {logo ? (
+                    <img
+                      src={logo}
+                      alt={`logo de ${nombre}`}
+                      className="h-18 w-auto object-contain"
+                    />
+                  ) : (
+                    <span className="font-semibold">{nombre}</span>
+                  )}
                 </Link>
               </div>
 
@@ -196,7 +169,7 @@ const Navbar = () => {
                   <div className="space-y-3 px-4">
                     <a
                       href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                        `${calle} ${numero}, ${ciudad}`
+                        `${capitalizedCalle} ${numero}, ${capitalizedCiudad}`
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -204,7 +177,8 @@ const Navbar = () => {
                     >
                       <FaMapMarkerAlt className="h-5 w-5" />
                       <span>
-                        {calle}, {numero}, {ciudad}
+                        {capitalizedCalle} {numero}, {capitalizedCiudad}, CP{" "}
+                        {codigoPostal}
                       </span>
                     </a>
                     <a
@@ -216,7 +190,7 @@ const Navbar = () => {
                       <span>{telefono}</span>
                     </a>
                     <a
-                      href={enlace}
+                      href={enlaceWhatsapp}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center space-x-3 text-green-600 hover:text-green-700 transition-colors"
@@ -244,6 +218,17 @@ const Navbar = () => {
                       >
                         <FaInstagram className="h-5 w-5" />
                         <span>Instagram</span>
+                      </a>
+                    )}
+                    {facebook && (
+                      <a
+                        href={`https://www.facebook.com/${facebook}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-3 text-blue-600 hover:text-blue-700 transition-colors"
+                      >
+                        <FaFacebook className="h-5 w-5" />
+                        <span>Facebook</span>
                       </a>
                     )}
                   </div>
@@ -277,14 +262,15 @@ const Navbar = () => {
             </h2>
             <div className="space-y-4">
               <a
-                href={`https://www.google.com/maps/search/?api=1&query=${`${calle} ${numero}, ${ciudad}`}`}
+                href={`https://www.google.com/maps/search/?api=1&query=${`${capitalizedCalle} ${numero}, ${capitalizedCiudad}`}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-3 text-gray-600 hover:text-gray-900 transition-colors cursor-pointer"
               >
                 <FaMapMarkerAlt className="h-5 w-5" />
                 <span>
-                  {calle}, {numero}, {ciudad}
+                  {capitalizedCalle} {numero}, {capitalizedCiudad}, CP{" "}
+                  {codigoPostal}{" "}
                 </span>
               </a>
               <a
@@ -297,7 +283,7 @@ const Navbar = () => {
               </a>
 
               <a
-                href={enlace}
+                href={enlaceWhatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-3 text-green-600 hover:text-green-700 transition-colors cursor-pointer"
@@ -324,6 +310,17 @@ const Navbar = () => {
                 >
                   <FaInstagram className="h-5 w-5" />
                   <span>Instagram</span>
+                </a>
+              )}
+              {facebook && (
+                <a
+                  href={`https://www.facebook.com/${facebook}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-3 text-blue-600 hover:text-blue-700 transition-colors"
+                >
+                  <FaFacebook className="h-5 w-5" />
+                  <span>Facebook</span>
                 </a>
               )}
             </div>
