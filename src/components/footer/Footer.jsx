@@ -15,10 +15,10 @@ function Footer() {
         <p className="font-medium">
           No pagues por adelantado sin conocer al local. Todos los ítems
           ofrecidos son responsabilidad de{" "}
-          <span className="text-pink-600">{empresa.nombre}</span>
+          <span className="text-pink-600 segma">{empresa.nombre}</span>
         </p>
         <div className="flex justify-center items-center">
-          <span>Desarrollado por</span>
+          <span className="segma">Desarrollado por</span>
           <a
             href="https://uhmostore.netlify.app/"
             target="_blank"

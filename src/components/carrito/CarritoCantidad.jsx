@@ -35,14 +35,14 @@ const CarritoCantidad = () => {
 
   const contentMobile = (
     <div className="bg-white rounded-2xl shadow-md p-6">
-      <h3 className="text-xl font-bold mb-4 text-gray-800">
+      <h3 className="text-xl segma font-bold mb-4 text-gray-800">
         Resumen de tu pedido
       </h3>
 
       {cart.length > 0 && (
         <div className="flex justify-between items-center text-base font-semibold border-b border-gray-200 pb-4 mb-4">
-          <span>Total:</span>
-          <span className="text-green-700">{total}</span>
+          <span className="segma">Total:</span>
+          <span className="text-green-700 segma">{total}</span>
         </div>
       )}
 
@@ -51,7 +51,7 @@ const CarritoCantidad = () => {
           type="button"
           name="Confirmar pedido"
           aria-label="Confirmar pedido"
-          className="bg-green-600 cursor-pointer hover:bg-green-700 text-white font-bold w-full py-3 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+          className="bg-green-600 cursor-pointer hover:bg-green-700 text-white font-bold w-full py-3 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed segma"
           disabled={cart.length === 0}
         >
           Confirmar pedido
@@ -65,7 +65,7 @@ const CarritoCantidad = () => {
     <div className="bg-white shadow-xl rounded-2xl p-8">
       <div className="grid grid-cols-1 items-center gap-6">
         <div>
-          <h3 className="text-2xl font-semibold font-mono text-gray-800 mb-4 text-center">
+          <h3 className="text-2xl font-semibold font-mono text-gray-800 mb-4 text-center segma">
             Resumen de tu pedido
           </h3>
           {cart.length > 0 ? (
@@ -84,7 +84,7 @@ const CarritoCantidad = () => {
             type="button"
             name="Confirmar pedido"
             aria-label="Confirmar pedido"
-            className="bg-green-600 hover:bg-green-700 cursor-pointer text-white font-bold py-3 w-full rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-green-600 hover:bg-green-700 cursor-pointer text-white font-bold py-3 w-full rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed segma"
             disabled={cart.length === 0}
           >
             Confirmar pedido

@@ -20,6 +20,7 @@ function Home() {
       try {
         await getEmpresaInfo(nombreEmpresa);
       } catch (error) {
+        console.error(error);
         navigate("/error", { replace: true });
       }
     };
@@ -34,21 +35,25 @@ function Home() {
     <>
       {/* banner empresa */}
       <div className="w-full flex justify-center">
-        <div className="max-h-3/6 h-auto pt-1">
+        <div className="w-3/4 flex justify-center pt-1">
           {empresa.banner ? (
             <img
               src={empresa.banner}
+              loading="lazy"
               alt="Banner"
-              className="w-full sm:h-[180px] md:h-[200px] object-cover sm:rounded-xl"
+              className="h-[120px] md:h-[200px] object-cover w-full rounded-xl"
             />
           ) : null}
         </div>
       </div>
+
       {/* productos de la empresa */}
       <section className="pt-6 pb-8 ">
         <div className="container mx-auto px-4">
           <div className="flex justify-center items-center mb-8">
-            <h1 className="text-2xl tracking-wider py-1">{empresa.nombre}</h1>
+            <h1 className="text-2xl segma tracking-wider py-1">
+              {empresa.nombre}
+            </h1>
           </div>
           <div className="pb-3 md:hidden">
             <SearchBar />

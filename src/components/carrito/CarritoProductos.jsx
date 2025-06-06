@@ -40,15 +40,20 @@ function CarritoProductos() {
             {cart.map((producto) => (
               <tr key={producto.id} className="hover:bg-gray-50 transition">
                 <td className="px-4 py-2">
-                  <div className="w-16 h-16 overflow-hidden rounded-lg border bg-white flex items-center justify-center">
-                    {producto.imagenes ? (
+                  <div className="w-16 h-16 overflow-hidden rounded-lggi bg-white flex items-center justify-center">
+                    {producto.imagen ? (
                       <img
-                        src={producto.imagenes}
+                        src={`${import.meta.env.VITE_API_HOST}${
+                          producto.imagen
+                        }`}
                         alt={producto.nombre}
+                        loading="lazy"
                         className="w-full h-full object-contain"
                       />
                     ) : (
-                      <span className="text-gray-400 text-xs">No image</span>
+                      <span className="text-gray-400 text-xs segma">
+                        No image
+                      </span>
                     )}
                   </div>
                 </td>
@@ -81,7 +86,7 @@ function CarritoProductos() {
                       title="Disminuir cantidad"
                       aria-label="Disminuir cantidad"
                       onClick={() => disminuirCantidad(producto.id)}
-                      className="w-6 h-6 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center cursor-pointer"
+                      className="w-6 h-6 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center cursor-pointer segma"
                     >
                       <FaMinus
                         size={12}
@@ -89,14 +94,14 @@ function CarritoProductos() {
                         title="Disminuir"
                       />
                     </button>
-                    <span className="font-semibold text-gray-800">
+                    <span className="font-semibold text-gray-800 segma">
                       {producto.cantidad}
                     </span>
                     <button
                       title="Aumentar cantidad"
                       aria-label="Aumentar cantidad"
                       onClick={() => agregarAlCarrito(producto)}
-                      className="w-6 h-6 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center cursor-pointer"
+                      className="w-6 h-6 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center cursor-pointer segma"
                     >
                       <FaPlus
                         size={12}
@@ -111,7 +116,7 @@ function CarritoProductos() {
                     title="Eliminar item"
                     aria-label="Eliminar item"
                     onClick={() => eliminarDelCarrito(producto.id)}
-                    className="text-red-500 hover:text-red-700 cursor-pointer"
+                    className="text-red-500 hover:text-red-700 cursor-pointer segma"
                   >
                     <FaRegTrashAlt size={16} title="Eliminar" />
                   </button>
@@ -131,31 +136,32 @@ function CarritoProductos() {
           >
             <div className="grid grid-cols-[1fr_3fr] gap-4 justify-center items-center">
               {/* Imagen */}
-              {producto.imagenes ? (
+              {producto.imagen ? (
                 <div className="overflow-hidden flex justify-center items-center">
                   <img
-                    src={producto.imagenes}
+                    src={`${import.meta.env.VITE_API_HOST}${producto.imagen}`}
                     alt={producto.nombre}
+                    loading="lazy"
                     className="w-full h-24 object-contain rounded-l-xl"
                   />
                 </div>
               ) : (
                 <div className="w-full h-24 bg-gray-200 flex items-center justify-center rounded-l-xl">
-                  <span className="text-gray-400">No image</span>
+                  <span className="text-gray-400 segma">No image</span>
                 </div>
               )}
 
               {/* Contenido */}
               <div className="flex flex-col justify-between p-2">
                 <div className="flex justify-between py-2">
-                  <h3 className="text-sm font-semibold text-gray-800">
+                  <h3 className="text-sm segma font-semibold text-gray-800">
                     {producto.nombre} {producto.marca} {producto.modelo}
                   </h3>
                   <button
                     title="Eliminar item"
                     aria-label="Eliminar item"
                     onClick={() => eliminarDelCarrito(producto.id)}
-                    className="text-red-500 hover:text-red-700"
+                    className="text-red-500 hover:text-red-700 segma"
                   >
                     <FaRegTrashAlt size={16} />
                   </button>
@@ -177,7 +183,7 @@ function CarritoProductos() {
                 )}
 
                 <div className="flex justify-between items-center mt-3">
-                  <span className="text-blue-600 font-bold text-base">
+                  <span className="text-blue-600 font-bold text-base segma">
                     {formatCurrency(producto.precio)}
                   </span>
                   <div className="flex space-x-2">
@@ -185,11 +191,11 @@ function CarritoProductos() {
                       title="Disminuir cantidad"
                       aria-label="Disminuir cantidad"
                       onClick={() => disminuirCantidad(producto.id)}
-                      className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
+                      className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 segma"
                     >
                       <FaMinus size={12} className="text-gray-700" />
                     </button>
-                    <span className="font-semibold text-gray-800">
+                    <span className="font-semibold text-gray-800 segma">
                       {producto.cantidad}
                     </span>
                     <button

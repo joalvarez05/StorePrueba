@@ -1,10 +1,12 @@
 import { BsCart3 } from "react-icons/bs";
+import { FiPackage } from "react-icons/fi";
+
 import { motion } from "framer-motion";
 import useCarritoStore from "@/lib/stores/useCarritoStore";
 import { useEmpresaStore } from "@/lib/stores/useEmpresaStore";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { useProductosFiltrados } from "@/lib/stores/useProductosFiltrados";
-
+import { API_HOST } from "@/utils/config";
 function ProductCard() {
   const agregarAlCarrito = useCarritoStore((state) => state.agregarAlCarrito);
   const { productos } = useEmpresaStore();
@@ -21,9 +23,23 @@ function ProductCard() {
 
   if (productosParaRenderizar.length === 0) return null;
 
+  const productosVisibles = productosParaRenderizar.filter(
+    (product) => product.habilitado !== false
+  );
+
+  if (productosVisibles.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center py-10 text-gray-600 text-lg">
+        <FiPackage className="text-5xl mb-4 animate-bounce text-indigo-500" />
+        <p className="font-semibold text-xl text-center ">
+          La tienda aún no tiene productos para ofrecerte
+        </p>
+      </div>
+    );
+  }
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 justify-items-center">
-      {productosParaRenderizar.map((product, index) => (
+      {productosVisibles.map((product, index) => (
         <motion.div
           key={product.id}
           className="bg-white rounded-lg overflow-hidden shadow-[inset_0_3px_6px_-4px_rgba(0,0,0,0.2),0_2px_8px_rgba(0,0,0,0.1)] transition-all duration-300 ease-in-out hover:shadow-[inset_0_6px_6px_-4px_rgba(0,0,0,0.15),0_10px_20px_rgba(0,0,0,0.2)] hover:scale-[1.01] w-full h-[200px] md:h-[360px] flex flex-row md:flex-col"
@@ -38,16 +54,18 @@ function ProductCard() {
         >
           {/* Imagen */}
           <div className="w-1/3 md:w-full md:h-3/5 relative overflow-hidden flex items-center justify-center">
-            {product.imagenes ? (
+            {product.imagen ? (
               <img
-                src={product.imagenes}
+                src={`${API_HOST}${product.imagen}`}
                 alt={product.nombre}
                 title={product.nombre}
                 loading="lazy"
                 className="max-h-full max-w-full object-contain"
               />
             ) : (
-              <span className="text-gray-500 text-xs">{product.nombre}</span>
+              <span className="text-gray-500 text-xs segma">
+                {product.nombre}
+              </span>
             )}
           </div>
 
@@ -55,7 +73,7 @@ function ProductCard() {
           <div className="w-2/3 md:h-3/4 md:w-full p-3 flex flex-col justify-between">
             <div>
               <h3
-                className="text-lg font-semibold text-gray-800 mb-1 line-clamp-1"
+                className="text-lg font-semibold text-gray-800 segma mb-1 line-clamp-1"
                 title={product.nombre + " " + product.marca}
               >
                 {product.nombre} {product.marca}
@@ -84,7 +102,7 @@ function ProductCard() {
             </div>
             <div>
               <div className="flex items-center justify-between mt-1 mb-1">
-                <span className="text-xl font-bold text-indigo-600">
+                <span className="text-xl font-bold text-indigo-600 segma">
                   {formatCurrency(product.precio)}
                 </span>
               </div>
@@ -92,7 +110,7 @@ function ProductCard() {
               <button
                 title="Agregar item"
                 aria-label="Agregar item"
-                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 rounded-md flex items-center justify-center transition-all duration-300 transform hover:scale-105 cursor-pointer"
+                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 rounded-md flex items-center justify-center transition-all duration-300 transform hover:scale-105 cursor-pointer segma"
                 onClick={() => handleAgregarAlCarrito(product)}
               >
                 <BsCart3 className="h-5 w-5 mr-2" />

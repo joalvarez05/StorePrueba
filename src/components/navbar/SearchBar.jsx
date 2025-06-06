@@ -71,10 +71,10 @@ function SearchBar() {
             title="Ordenar"
             aria-label="Ordenar"
             onClick={() => setDropdownOpen((prev) => !prev)}
-            className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors cursor-pointer"
+            className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors cursor-pointer segma"
           >
             <FaFilter className="h-4 w-4 text-gray-500" />
-            <span className="text-sm text-gray-700">{ordenar}</span>
+            <span className="text-sm text-gray-700 segma">{ordenar}</span>
           </button>
 
           {dropdownOpen && (
@@ -90,7 +90,7 @@ function SearchBar() {
                         title="Ordenar"
                         aria-label="Ordenar"
                         onClick={() => manejarOrden(opcion)}
-                        className="w-full text-left cursor-pointer"
+                        className="w-full text-left cursor-pointer segma"
                       >
                         {opcion}
                       </button>

@@ -53,7 +53,7 @@ function Pedido() {
         <div className="flex justify-center py-8">
           <div className="w-full max-w-2xl">
             <div className="bg-white shadow-md rounded-lg p-6">
-              <h2 className="text-2xl font-semibold text-center mb-6">
+              <h2 className="text-2xl font-semibold text-center mb-6 segma">
                 Tu Pedido ({totalArticulos}{" "}
                 {totalArticulos === 1 ? "artículo" : "artículos"})
               </h2>
@@ -134,7 +134,7 @@ function Pedido() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-blue-600 cursor-pointer text-white py-2 rounded hover:bg-blue-700 transition"
+                  className="w-full bg-blue-600 cursor-pointer text-white py-2 rounded hover:bg-blue-700 transition segma"
                 >
                   {isSubmitting ? "Enviando..." : "Confirmar Pedido"}
                 </button>
@@ -153,7 +153,7 @@ const InputField = ({ id, label, placeholder, icon, register, error }) => (
       htmlFor={id}
       className="flex items-center gap-2 text-sm font-medium text-gray-700"
     >
-      {icon && <span className="text-gray-600">{icon}</span>} {label}
+      {icon && <span className="text-gray-600 segma">{icon}</span>} {label}
     </label>
     <input
       id={id}
@@ -174,7 +174,7 @@ const SelectField = ({ id, label, icon, register, error, options }) => (
       htmlFor={id}
       className="flex items-center gap-2 text-sm font-medium text-gray-700"
     >
-      {icon && <span className="text-gray-600">{icon}</span>} {label}
+      {icon && <span className="text-gray-600 segma">{icon}</span>} {label}
     </label>
     <select
       id={id}

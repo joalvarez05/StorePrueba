@@ -13,7 +13,7 @@ function Carrito() {
         </div>
         <div className="flex flex-col container mx-auto">
           <div className="py-4">
-            <h2 className="text-xl md:text-2xl font-bold tracking-wider bg-clip-text py-1 ms-5">
+            <h2 className="text-xl md:text-2xl font-bold tracking-wider segma bg-clip-text py-1 ms-5">
               Carrito ({totalArticulos} artículos)
             </h2>
           </div>

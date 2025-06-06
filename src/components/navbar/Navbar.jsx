@@ -78,10 +78,10 @@ const Navbar = () => {
                     <img
                       src={logo}
                       alt={`logo de ${nombre}`}
-                      className="h-18 w-auto object-contain"
+                      className="h-18 w-auto object-contain rounded-full"
                     />
                   ) : (
-                    <span className="font-semibold">{nombre}</span>
+                    <span className="font-semibold segma">{nombre}</span>
                   )}
                 </Link>
               </div>
@@ -93,10 +93,10 @@ const Navbar = () => {
                   title="Abrir informacion"
                   aria-label="Abrir informacion"
                   onClick={handleOpen}
-                  className="flex items-center justify-center space-x-2 px-6 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors cursor-pointer"
+                  className="flex items-center justify-center space-x-2 px-6 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors cursor-pointer segma"
                 >
                   <FaInfoCircle className="h-4 w-4" />
-                  <span className="text-sm font-semibold ">{nombre}</span>
+                  <span className="text-sm font-semibold segma">{nombre}</span>
                 </button>
                 <div className="relative inline-block py-1">
                   {itemCount > 0 ? (
@@ -106,7 +106,7 @@ const Navbar = () => {
                       title="Carrito"
                     >
                       <FaShoppingCart size={24} />
-                      <span className="absolute top-[-13px] left-[12px] text-white bg-orange-600 rounded-full px-1 text-sm font-semibold">
+                      <span className="absolute top-[-13px] left-[12px] text-white bg-orange-600 rounded-full px-1 text-sm font-semibold segma">
                         {itemCount}
                       </span>
                     </Link>
@@ -128,7 +128,7 @@ const Navbar = () => {
                     <Link to={`/${param}/carrito`} title="Carrito">
                       <FaShoppingCart size={24} />
                       {itemCount > 0 && (
-                        <span className="absolute top-[-13px] left-[12px] text-white bg-orange-600 rounded-full px-1 text-sm font-semibold">
+                        <span className="absolute top-[-13px] left-[12px] text-white bg-orange-600 rounded-full px-1 text-sm font-semibold segma">
                           {itemCount}
                         </span>
                       )}
@@ -146,7 +146,7 @@ const Navbar = () => {
                   title="Desplegar opciones"
                   aria-label="Desplegar opciones"
                   onClick={toggleMobileMenu}
-                  className="p-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors"
+                  className="p-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors segma"
                 >
                   {isOpen ? (
                     <FaTimes className="h-6 w-6 text-gray-600" />
@@ -178,7 +178,7 @@ const Navbar = () => {
                       className="flex items-center space-x-3 text-gray-600 hover:text-gray-900 transition-colors"
                     >
                       <FaMapMarkerAlt className="h-5 w-5" />
-                      <span>
+                      <span className="segma">
                         {capitalizedCalle} {numero}, {capitalizedCiudad}, CP{" "}
                         {codigoPostal}
                       </span>
@@ -189,7 +189,7 @@ const Navbar = () => {
                       className="flex items-center space-x-3 text-gray-600 hover:text-gray-900 transition-colors"
                     >
                       <FaPhone className="h-5 w-5" />
-                      <span>{telefono}</span>
+                      <span className="segma">{telefono}</span>
                     </a>
                     <a
                       href={enlaceWhatsapp}
@@ -198,7 +198,7 @@ const Navbar = () => {
                       className="flex items-center space-x-3 text-green-600 hover:text-green-700 transition-colors"
                     >
                       <FaWhatsapp className="h-5 w-5" />
-                      <span>WhatsApp</span>
+                      <span className="segma">WhatsApp</span>
                     </a>
 
                     <a
@@ -208,7 +208,7 @@ const Navbar = () => {
                       target="_blank"
                     >
                       <FaEnvelope className="h-5 w-5" />
-                      <span>{email}</span>
+                      <span className="segma">{email}</span>
                     </a>
 
                     {instagram && (
@@ -219,7 +219,7 @@ const Navbar = () => {
                         className="flex items-center space-x-3 text-pink-600 hover:text-pink-700 transition-colors"
                       >
                         <FaInstagram className="h-5 w-5" />
-                        <span>Instagram</span>
+                        <span className="segma">Instagram</span>
                       </a>
                     )}
                     {facebook && (
@@ -230,7 +230,7 @@ const Navbar = () => {
                         className="flex items-center space-x-3 text-blue-600 hover:text-blue-700 transition-colors"
                       >
                         <FaFacebook className="h-5 w-5" />
-                        <span>Facebook</span>
+                        <span className="segma">Facebook</span>
                       </a>
                     )}
                   </div>
@@ -255,11 +255,11 @@ const Navbar = () => {
               title="Cerrar ventana"
               aria-label="Cerrar ventana"
               onClick={handleClose}
-              className="absolute top-6 right-4 p-1 rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
+              className="absolute top-6 right-4 p-1 rounded-full hover:bg-gray-100 transition-colors cursor-pointer segma"
             >
               <FaTimes className="h-5 w-5 text-gray-500" />
             </button>
-            <h2 className="text-2xl font-bold mb-4">{nombre}</h2>
+            <h2 className="segma text-2xl font-bold mb-4">{nombre}</h2>
             <p className="mb-2">
               Dirección: {capitalizedCalle} {numero}, {capitalizedCiudad}, CP{" "}
               {codigoPostal}

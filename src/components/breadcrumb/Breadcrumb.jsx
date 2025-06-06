@@ -4,7 +4,7 @@ function Breadcrumb() {
   const location = useLocation();
   const navigate = useNavigate();
   const path = location.pathname;
-  
+
   const breadcrumbMap = {
     "/carrito": "Mi carrito",
     "/pedido": "Pedido",
@@ -29,7 +29,7 @@ function Breadcrumb() {
           <div className="flex items-center">
             <span
               onClick={handleGoBack}
-              className="cursor-pointer text-lg font-medium text-indigo-600 hover:underline"
+              className="cursor-pointer segma text-lg font-medium text-indigo-600 hover:underline"
             >
               {productosLabel}
             </span>
