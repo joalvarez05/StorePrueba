@@ -9,16 +9,16 @@ import Loader from "@/components/Loader";
 
 function Home() {
   const { nombreEmpresa } = useParams();
-
+  const nombreConEspacios = nombreEmpresa.replace("-", " ");
   const navigate = useNavigate();
   const { empresa, setParam } = useEmpresaStore();
 
   useEffect(() => {
-    setParam(nombreEmpresa);
+    setParam(nombreConEspacios);
 
     const fetchData = async () => {
       try {
-        await getEmpresaInfo(nombreEmpresa);
+        await getEmpresaInfo(nombreConEspacios);
       } catch (error) {
         console.error(error);
         navigate("/error", { replace: true });
@@ -26,7 +26,7 @@ function Home() {
     };
 
     fetchData();
-  }, [nombreEmpresa, navigate, setParam]);
+  }, [nombreConEspacios, navigate, setParam]);
   useMetaTags(empresa);
 
   if (!empresa) return <Loader />;
@@ -35,13 +35,13 @@ function Home() {
     <>
       {/* banner empresa */}
       <div className="w-full flex justify-center">
-        <div className="w-3/4 flex justify-center pt-1">
+        <div className="w-4/4 md:w-3/4 bg-cover flex overflow-hidden justify-center pt-1">
           {empresa.banner ? (
             <img
               src={empresa.banner}
               loading="lazy"
               alt="Banner"
-              className="h-[120px] md:h-[200px] object-cover w-full rounded-xl"
+              className="h-[205px] object-cover w-full md:w-3/4 rounded-xl"
             />
           ) : null}
         </div>
