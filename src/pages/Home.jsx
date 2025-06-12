@@ -36,7 +36,7 @@ function Home() {
     <>
       {/* banner empresa */}
       <div className="w-full flex justify-center">
-        <div className="w-full md:w-3/4 flex justify-center pt-1">
+        <div className="w-full md:w-3/4 flex overflow-hidden justify-center pt-1">
           {empresa.banner ? (
             <img
               src={empresa.banner}
