@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   FaBars,
   FaTimes,
@@ -21,11 +21,11 @@ import Loader from "@/components/Loader";
 
 const Navbar = () => {
   const { empresa, param } = useEmpresaStore();
+  const [showLoader, setShowLoader] = useState(false);
+  const navigate = useNavigate();
   const empresaSaved = sessionStorage.getItem("empresa");
   const empresaGuardada = empresaSaved ? JSON.parse(empresaSaved) : null;
-  if (!empresa && !empresaGuardada) {
-    return <Loader />;
-  }
+
   const empresaData = empresa || empresaGuardada;
   const [itemCount, setItemCount] = useState(0);
   const cart = useCarritoStore((state) => state.cart);
@@ -49,6 +49,28 @@ const Navbar = () => {
     );
     setItemCount(totalProductos);
   }, [cart]);
+
+  useEffect(() => {
+    let timeoutId;
+
+    if (!empresa && !empresaGuardada) {
+      setShowLoader(true);
+      timeoutId = setTimeout(() => {
+        setShowLoader(false);
+        navigate("/error");
+      }, 5000);
+    } else {
+      setShowLoader(false);
+    }
+
+    return () => clearTimeout(timeoutId);
+  }, [empresa, empresaGuardada, navigate]);
+
+  if (showLoader) {
+    return <Loader />;
+  }
+
+  if (!empresaData) return null;
 
   const {
     nombre,

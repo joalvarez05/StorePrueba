@@ -1,14 +1,12 @@
 import { useEmpresaStore } from "@/lib/stores/useEmpresaStore";
-import Loader from "@/components/Loader";
+
 function Footer() {
   const { empresa } = useEmpresaStore();
-  if (!empresa || !empresa.nombre) {
-    return (
-      <footer className="text-center font-medium py-4 text-gray-500 text-md">
-        <Loader />
-      </footer>
-    );
+
+  if (!empresa) {
+    return null;
   }
+
   return (
     <footer className="bg-gray-100 pt-4 text-center text-sm text-gray-700 mt-2">
       <div className="px-4 max-w-4xl mx-auto">
